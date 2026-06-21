@@ -1,6 +1,6 @@
 """
 SkillMirror — Job Description Scraper
-Module 2 of 4
+Module 2 of 4 — Phase 2 (Multi-role support)
 """
 
 import requests
@@ -11,8 +11,6 @@ import re
 from collections import defaultdict, Counter
 from modules.parser import ALIAS_TO_SKILL, get_category
 
-# ── Headers to mimic a real browser ──────────────────────────────────────────
-
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -22,90 +20,145 @@ HEADERS = {
     "Accept-Language": "en-US,en;q=0.9",
 }
 
-# ── Target roles to scrape ────────────────────────────────────────────────────
+# ── Role Groups ───────────────────────────────────────────────────────────────
 
-TARGET_ROLES = [
-    "data scientist",
-    "data analyst",
-    "machine learning engineer",
-    "AI engineer",
-]
+ROLE_GROUPS = {
+    "Data & AI": [
+        "data scientist",
+        "data analyst",
+        "machine learning engineer",
+        "AI engineer",
+    ],
+    "Software Engineering": [
+        "software engineer",
+        "backend developer",
+        "full stack developer",
+        "frontend developer",
+    ],
+    "Cloud & DevOps": [
+        "devops engineer",
+        "cloud engineer",
+        "site reliability engineer",
+        "platform engineer",
+    ],
+    "Cybersecurity": [
+        "cybersecurity analyst",
+        "security engineer",
+        "penetration tester",
+        "SOC analyst",
+    ],
+    "ECE & Embedded": [
+        "embedded systems engineer",
+        "VLSI engineer",
+        "IoT engineer",
+        "signal processing engineer",
+    ],
+    "Mechanical": [
+        "mechanical design engineer",
+        "CAD engineer",
+        "manufacturing engineer",
+        "automotive engineer",
+    ],
+    "Civil": [
+        "structural engineer",
+        "civil site engineer",
+        "urban planner",
+        "environmental engineer",
+    ],
+}
 
-# ── Scraper ───────────────────────────────────────────────────────────────────
+# ── Fallback JD datasets per role group ───────────────────────────────────────
 
-def scrape_linkedin_jobs(role, max_jobs=25):
-    """Scrape LinkedIn job listings for a given role."""
-    role_query = role.replace(" ", "%20")
-    url = (
-        f"https://www.linkedin.com/jobs/search/"
-        f"?keywords={role_query}&location=India"
-        f"&f_TPR=r604800"  # last 7 days
-    )
+FALLBACK_JDS = {
+    "Data & AI": [
+        "Python machine learning deep learning SQL statistics pandas numpy scikit-learn data visualization matplotlib TensorFlow PyTorch git cloud computing AWS",
+        "NLP BERT transformers Python machine learning statistics hypothesis testing data analysis SQL big data spark",
+        "Python supervised learning unsupervised learning regression classification clustering neural networks data visualization plotly tableau",
+        "Machine learning deep learning computer vision object detection TensorFlow keras python sql git linux docker",
+        "Data analysis statistics probability python pandas numpy matplotlib seaborn scikit-learn machine learning sql databases",
+        "Python NLP text classification sentiment analysis word embeddings bert transformers deep learning sql data engineering",
+        "Machine learning XGBoost lightgbm gradient boosting feature engineering pandas python sql data visualization git",
+        "Deep learning CNN RNN LSTM computer vision image classification tensorflow pytorch python sql cloud computing",
+        "Generative AI LLM GPT python NLP deep learning transformers machine learning cloud computing REST API docker",
+        "Python data analysis SQL visualization matplotlib seaborn statistics hypothesis testing data cleaning pandas numpy",
+    ],
+    "Software Engineering": [
+        "Python Java JavaScript data structures algorithms OOP REST API git SQL databases system design",
+        "Java Spring Boot microservices REST API SQL git docker kubernetes AWS backend development",
+        "JavaScript React NodeJS HTML CSS REST API git SQL MongoDB frontend backend full stack",
+        "Python Django Flask REST API SQL git docker linux OOP data structures algorithms",
+        "Java C++ data structures algorithms OOP system design SQL git linux problem solving",
+        "JavaScript TypeScript React Redux NodeJS REST API git SQL MongoDB docker frontend",
+        "Python Java SQL git OOP REST API microservices docker kubernetes cloud computing AWS",
+        "Full stack development React NodeJS SQL MongoDB REST API git docker javascript HTML CSS",
+        "Backend development Python SQL REST API git docker kubernetes microservices system design linux",
+        "Software engineering Java Python data structures algorithms OOP git SQL databases system design",
+    ],
+    "Cloud & DevOps": [
+        "AWS Azure GCP docker kubernetes CI/CD jenkins git linux bash scripting terraform ansible",
+        "DevOps docker kubernetes CI/CD pipeline git jenkins AWS cloud computing linux infrastructure",
+        "Cloud computing AWS EC2 S3 lambda docker kubernetes terraform linux git CI/CD devops",
+        "Site reliability engineering SRE kubernetes docker monitoring prometheus grafana linux AWS git",
+        "Platform engineering kubernetes docker terraform AWS CI/CD git linux python bash scripting",
+        "DevOps CI/CD jenkins docker kubernetes AWS git linux ansible terraform python scripting",
+        "Cloud engineer AWS Azure kubernetes docker terraform git linux CI/CD python bash",
+        "Kubernetes docker AWS CI/CD terraform ansible linux git python monitoring grafana prometheus",
+        "Cloud infrastructure AWS GCP Azure terraform kubernetes docker CI/CD git linux python",
+        "DevOps automation docker kubernetes CI/CD AWS git terraform linux python bash ansible",
+    ],
+    "Cybersecurity": [
+        "network security cryptography python linux penetration testing ethical hacking SIEM SQL firewalls",
+        "cybersecurity SOC SIEM threat analysis python linux network security cryptography incident response",
+        "penetration testing ethical hacking python linux network security vulnerabilities OWASP SQL",
+        "security engineer cryptography python linux network protocols firewalls SIEM threat intelligence",
+        "SOC analyst SIEM threat detection python linux network security incident response cryptography",
+        "cybersecurity analyst python linux network security SQL cryptography firewalls threat analysis",
+        "information security cryptography python linux penetration testing network protocols SIEM",
+        "ethical hacking penetration testing python linux OWASP network security cryptography SQL",
+        "cybersecurity python linux network security cryptography SIEM threat intelligence SQL firewalls",
+        "security operations python linux network security SIEM cryptography incident response SQL",
+    ],
+    "ECE & Embedded": [
+        "embedded systems C C++ microcontrollers RTOS Arduino Raspberry Pi IoT sensors firmware",
+        "VLSI design Verilog VHDL digital circuits FPGA semiconductor signal processing",
+        "IoT embedded systems C python sensors Arduino Raspberry Pi MQTT wireless protocols",
+        "signal processing MATLAB python DSP communications wireless embedded systems C",
+        "embedded C RTOS microcontrollers ARM cortex firmware PCB design IoT sensors",
+        "VLSI VHDL Verilog digital design FPGA semiconductor manufacturing signal processing",
+        "IoT C python MQTT embedded systems sensors wireless protocols Arduino cloud computing",
+        "embedded systems firmware C C++ RTOS microcontrollers ARM IoT sensors debugging",
+        "signal processing MATLAB DSP python communications wireless embedded systems C",
+        "VLSI design digital circuits Verilog VHDL FPGA semiconductor signal processing MATLAB",
+    ],
+    "Mechanical": [
+        "CAD SolidWorks AutoCAD mechanical design finite element analysis manufacturing materials",
+        "mechanical engineering CAD AutoCAD SolidWorks ANSYS FEA thermal analysis manufacturing",
+        "design engineering SolidWorks CAD FEA ANSYS manufacturing materials science thermodynamics",
+        "automotive engineering CAD SolidWorks MATLAB thermal analysis FEA manufacturing materials",
+        "manufacturing engineering CAD AutoCAD lean manufacturing Six Sigma quality control materials",
+        "mechanical design CAD SolidWorks FEA ANSYS thermodynamics fluid mechanics manufacturing",
+        "product design SolidWorks AutoCAD CAD materials science manufacturing FEA ANSYS",
+        "CAD design SolidWorks AutoCAD ANSYS FEA mechanical engineering manufacturing materials",
+        "thermal engineering MATLAB thermodynamics fluid mechanics CAD ANSYS FEA heat transfer",
+        "mechanical engineer CAD SolidWorks AutoCAD FEA manufacturing materials thermodynamics",
+    ],
+    "Civil": [
+        "structural engineering AutoCAD STAAD Pro ETABS concrete steel design construction management",
+        "civil engineering AutoCAD STAAD Pro structural analysis construction management surveying",
+        "structural design ETABS STAAD Pro AutoCAD concrete steel reinforcement construction",
+        "site engineer AutoCAD construction management project management surveying structural analysis",
+        "urban planning GIS AutoCAD environmental engineering construction project management",
+        "environmental engineer GIS AutoCAD water treatment environmental impact assessment",
+        "structural engineering STAAD Pro ETABS AutoCAD concrete design construction management",
+        "civil site engineer AutoCAD construction management surveying structural analysis project",
+        "geotechnical engineering AutoCAD soil mechanics foundation design construction management",
+        "civil engineering AutoCAD GIS STAAD Pro structural analysis construction project management",
+    ],
+}
 
-    print(f"  Fetching: {role}...")
-    try:
-        resp = requests.get(url, headers=HEADERS, timeout=10)
-        soup = BeautifulSoup(resp.text, "html.parser")
-
-        # Get job cards
-        cards = soup.find_all(
-            "div",
-            class_=re.compile("job-search-card|base-card")
-        )
-
-        jobs = []
-        for card in cards[:max_jobs]:
-            title_el = card.find(
-                ["h3", "h4"],
-                class_=re.compile("title|job-title")
-            )
-            desc_el = card.find(
-                ["p", "div"],
-                class_=re.compile("description|summary")
-            )
-            title = title_el.get_text(strip=True) if title_el else role
-            desc = desc_el.get_text(strip=True) if desc_el else ""
-            if title:
-                jobs.append({"title": title, "description": desc})
-
-        print(f"    Found {len(jobs)} listings")
-        return jobs
-
-    except Exception as e:
-        print(f"    LinkedIn blocked or error: {e}")
-        return []
-
-
-def scrape_indeed_jobs(role, max_jobs=25):
-    """Fallback: scrape Indeed India for job descriptions."""
-    role_query = role.replace(" ", "+")
-    url = f"https://in.indeed.com/jobs?q={role_query}&l=India"
-
-    print(f"  Trying Indeed: {role}...")
-    try:
-        resp = requests.get(url, headers=HEADERS, timeout=10)
-        soup = BeautifulSoup(resp.text, "html.parser")
-
-        jobs = []
-        cards = soup.find_all("div", class_=re.compile("job_seen_beacon|jobsearch"))
-        for card in cards[:max_jobs]:
-            title_el = card.find(["h2", "h3", "a"])
-            desc_el = card.find(["div", "ul"],
-                                class_=re.compile("underShelfFooter|summary"))
-            title = title_el.get_text(strip=True) if title_el else role
-            desc = desc_el.get_text(strip=True) if desc_el else ""
-            jobs.append({"title": title, "description": desc})
-
-        print(f"    Found {len(cards)} listings")
-        return jobs
-    except Exception as e:
-        print(f"    Indeed error: {e}")
-        return []
-
-# ── Skill extractor from JD text ──────────────────────────────────────────────
+# ── Skill extractor ───────────────────────────────────────────────────────────
 
 def extract_skills_from_jd(text):
-    """Extract skills from a job description using the same taxonomy."""
     text_lower = text.lower()
     found = set()
     for alias, skill in ALIAS_TO_SKILL.items():
@@ -114,98 +167,34 @@ def extract_skills_from_jd(text):
             found.add(skill)
     return list(found)
 
-# ── Fallback: hardcoded realistic JD data ────────────────────────────────────
-# Used when scraping is blocked — based on real Naukri/LinkedIn JDs
-
-FALLBACK_JDS = {
-    "data scientist": [
-        "Python, machine learning, deep learning, SQL, statistics, pandas, numpy, scikit-learn, data visualization, matplotlib, TensorFlow or PyTorch, git, cloud computing AWS",
-        "NLP, BERT, transformers, Python, machine learning algorithms, statistics, hypothesis testing, data analysis, SQL, big data, spark",
-        "Python programming, supervised learning, unsupervised learning, regression, classification, clustering, neural networks, data visualization, plotly, tableau",
-        "Machine learning, deep learning, computer vision, object detection, TensorFlow, keras, python, sql, git, linux, docker",
-        "Data analysis, statistics, probability, python, pandas, numpy, matplotlib, seaborn, scikit-learn, machine learning, sql databases",
-        "Python, NLP, text classification, sentiment analysis, word embeddings, bert, transformers, deep learning, sql, data engineering",
-        "Machine learning, XGBoost, lightgbm, gradient boosting, feature engineering, pandas, python, sql, data visualization, git",
-        "Deep learning, CNN, RNN, LSTM, computer vision, image classification, tensorflow, pytorch, python, sql, cloud computing",
-    ],
-    "data analyst": [
-        "SQL, excel, python, data visualization, tableau, power bi, statistics, data analysis, pandas, numpy",
-        "SQL, python, data analysis, statistical analysis, hypothesis testing, matplotlib, seaborn, dashboards, reporting",
-        "Data visualization, power bi, tableau, SQL, excel, statistics, python, pandas, data analysis, business intelligence",
-        "Python, SQL, data analysis, exploratory data analysis, pandas, numpy, matplotlib, statistics, databases, git",
-        "SQL queries, python scripting, tableau dashboards, data visualization, statistical analysis, excel, data cleaning",
-        "Data analytics, SQL, python, power bi, statistics, data visualization, pandas, business intelligence, reporting",
-        "Python, data analysis, SQL, visualization, matplotlib, seaborn, statistics, hypothesis testing, data cleaning",
-        "SQL, data analysis, python, tableau, power bi, statistics, excel, databases, data visualization, reporting",
-    ],
-    "machine learning engineer": [
-        "Python, machine learning, deep learning, TensorFlow, PyTorch, scikit-learn, SQL, docker, kubernetes, git, cloud computing, AWS",
-        "Machine learning, deep learning, python, neural networks, tensorflow, model deployment, docker, kubernetes, REST API, git",
-        "Python, machine learning algorithms, deep learning, NLP, computer vision, tensorflow, pytorch, sql, cloud computing, devops",
-        "Machine learning, python, scikit-learn, XGBoost, feature engineering, data pipelines, docker, git, linux, SQL",
-        "Deep learning, CNN, transformers, NLP, python, pytorch, tensorflow, model optimization, docker, kubernetes, cloud",
-        "Python, machine learning, TensorFlow, keras, data engineering, ETL, data pipelines, SQL, git, linux, docker",
-        "ML engineering, python, model deployment, REST APIs, docker, kubernetes, machine learning, deep learning, SQL, git",
-        "Machine learning, deep learning, python, tensorflow, pytorch, NLP, computer vision, cloud computing AWS, docker",
-    ],
-    "AI engineer": [
-        "Python, machine learning, deep learning, generative AI, LLM, NLP, TensorFlow, PyTorch, cloud computing, docker, git",
-        "Generative AI, LLM, GPT, python, NLP, deep learning, transformers, machine learning, cloud computing, REST API",
-        "Python, AI, machine learning, deep learning, NLP, computer vision, tensorflow, pytorch, SQL, docker, kubernetes",
-        "LLM, generative AI, python, NLP, transformers, BERT, GPT, machine learning, deep learning, cloud computing, git",
-        "AI engineering, python, machine learning, deep learning, NLP, generative AI, docker, kubernetes, REST API, SQL",
-        "Python, deep learning, generative AI, LLM fine-tuning, NLP, machine learning, cloud computing, AWS, docker, git",
-        "Machine learning, AI, python, NLP, computer vision, deep learning, tensorflow, pytorch, SQL, git, linux",
-        "Generative AI, LLM, python, NLP, transformers, machine learning, cloud, docker, REST API, SQL, data engineering",
-    ]
-}
-
-def get_fallback_jds():
-    """Return realistic JD data when scraping fails."""
-    all_jds = []
-    for role, descriptions in FALLBACK_JDS.items():
-        for desc in descriptions:
-            all_jds.append({
-                "role": role,
-                "description": desc,
-                "skills": extract_skills_from_jd(desc)
-            })
-    return all_jds
 
 # ── Main scrape function ──────────────────────────────────────────────────────
 
-def scrape_jobs(use_fallback=False):
+def scrape_jobs(role_group="Data & AI", use_fallback=True):
     """
-    Main function — tries live scraping first,
-    falls back to realistic hardcoded JD data if blocked.
+    Scrape or load JD data for a specific role group.
     """
+    print(f"\n[1/2] Loading JD data for: {role_group}")
+
+    if role_group not in FALLBACK_JDS:
+        print(f"  Role group '{role_group}' not found, defaulting to Data & AI")
+        role_group = "Data & AI"
+
     all_jds = []
+    descriptions = FALLBACK_JDS[role_group]
+    roles = ROLE_GROUPS[role_group]
 
-    if not use_fallback:
-        print("\n[1/2] Attempting live scraping...")
-        for role in TARGET_ROLES:
-            jobs = scrape_linkedin_jobs(role, max_jobs=15)
-            if not jobs:
-                jobs = scrape_indeed_jobs(role, max_jobs=15)
-            for job in jobs:
-                skills = extract_skills_from_jd(
-                    job["title"] + " " + job["description"]
-                )
-                all_jds.append({
-                    "role": role,
-                    "title": job["title"],
-                    "description": job["description"],
-                    "skills": skills
-                })
-            time.sleep(2)  # be polite
+    for i, desc in enumerate(descriptions):
+        role = roles[i % len(roles)]
+        skills = extract_skills_from_jd(desc)
+        all_jds.append({
+            "role": role,
+            "description": desc,
+            "skills": skills
+        })
 
-    if not all_jds:
-        print("\n[1/2] Live scraping blocked — using realistic JD dataset...")
-        all_jds = get_fallback_jds()
+    print(f"[2/2] Analysing {len(all_jds)} job descriptions...")
 
-    print(f"\n[2/2] Analysing {len(all_jds)} job descriptions...")
-
-    # Count skill frequency across all JDs
     skill_freq = Counter()
     skill_per_role = defaultdict(lambda: defaultdict(int))
 
@@ -214,7 +203,6 @@ def scrape_jobs(use_fallback=False):
             skill_freq[skill] += 1
             skill_per_role[jd["role"]][skill] += 1
 
-    # Build ranked output
     total_jds = len(all_jds)
     ranked = []
     for skill, count in skill_freq.most_common():
@@ -227,7 +215,8 @@ def scrape_jobs(use_fallback=False):
 
     result = {
         "total_jds": total_jds,
-        "roles_covered": list(FALLBACK_JDS.keys()),
+        "role_group": role_group,
+        "roles_covered": roles,
         "skills_ranked": ranked,
         "skill_per_role": {
             role: dict(skills)
@@ -235,17 +224,17 @@ def scrape_jobs(use_fallback=False):
         }
     }
 
-    # Save
     with open("data/jd_skills.json", "w") as f:
         json.dump(result, f, indent=2)
 
-    print(f"\n✅ Done! Top 10 in-demand skills:")
+    print(f"\n✅ Top 10 skills for {role_group}:")
     for i, s in enumerate(ranked[:10], 1):
         print(f"  {i:2}. {s['skill']:<25} ({s['percentage']}% of JDs)")
 
-    print("\nSaved to data/jd_skills.json")
     return result
 
 
 if __name__ == "__main__":
-    scrape_jobs(use_fallback=True)
+    import sys
+    group = sys.argv[1] if len(sys.argv) > 1 else "Data & AI"
+    scrape_jobs(role_group=group)

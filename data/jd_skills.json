@@ -1,249 +1,96 @@
 {
-  "total_jds": 32,
+  "total_jds": 10,
+  "role_group": "ECE & Embedded",
   "roles_covered": [
-    "data scientist",
-    "data analyst",
-    "machine learning engineer",
-    "AI engineer"
+    "embedded systems engineer",
+    "VLSI engineer",
+    "IoT engineer",
+    "signal processing engineer"
   ],
   "skills_ranked": [
     {
+      "skill": "Embedded Systems",
+      "frequency": 7,
+      "percentage": 70.0,
+      "category": "ECE & Embedded"
+    },
+    {
+      "skill": "Signal Processing",
+      "frequency": 7,
+      "percentage": 70.0,
+      "category": "ECE & Embedded"
+    },
+    {
+      "skill": "IoT",
+      "frequency": 5,
+      "percentage": 50.0,
+      "category": "ECE & Embedded"
+    },
+    {
       "skill": "Python",
-      "frequency": 32,
-      "percentage": 100.0,
+      "frequency": 4,
+      "percentage": 40.0,
       "category": "Programming"
     },
     {
-      "skill": "SQL",
-      "frequency": 24,
-      "percentage": 75.0,
+      "skill": "VLSI",
+      "frequency": 3,
+      "percentage": 30.0,
+      "category": "ECE & Embedded"
+    },
+    {
+      "skill": "MATLAB",
+      "frequency": 3,
+      "percentage": 30.0,
       "category": "Programming"
     },
     {
-      "skill": "Machine Learning",
-      "frequency": 23,
-      "percentage": 71.9,
-      "category": "AI / ML"
+      "skill": "Computer Networks",
+      "frequency": 2,
+      "percentage": 20.0,
+      "category": "Core CS"
     },
     {
-      "skill": "Deep Learning",
-      "frequency": 18,
-      "percentage": 56.2,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Git",
-      "frequency": 13,
-      "percentage": 40.6,
-      "category": "Cloud & DevOps"
-    },
-    {
-      "skill": "NLP",
-      "frequency": 13,
-      "percentage": 40.6,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Docker",
-      "frequency": 13,
-      "percentage": 40.6,
-      "category": "Cloud & DevOps"
-    },
-    {
-      "skill": "TensorFlow",
-      "frequency": 12,
-      "percentage": 37.5,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Data Visualization",
-      "frequency": 12,
-      "percentage": 37.5,
-      "category": "Data"
-    },
-    {
-      "skill": "Statistics",
-      "frequency": 10,
-      "percentage": 31.2,
-      "category": "Data"
+      "skill": "Manufacturing",
+      "frequency": 1,
+      "percentage": 10.0,
+      "category": "Mechanical"
     },
     {
       "skill": "Cloud Computing",
-      "frequency": 9,
-      "percentage": 28.1,
-      "category": "Cloud & DevOps"
-    },
-    {
-      "skill": "PyTorch",
-      "frequency": 9,
-      "percentage": 28.1,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Data Analysis",
-      "frequency": 9,
-      "percentage": 28.1,
-      "category": "Data"
-    },
-    {
-      "skill": "Pandas",
-      "frequency": 7,
-      "percentage": 21.9,
-      "category": "Data"
-    },
-    {
-      "skill": "Computer Vision",
-      "frequency": 6,
-      "percentage": 18.8,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Kubernetes",
-      "frequency": 6,
-      "percentage": 18.8,
-      "category": "Cloud & DevOps"
-    },
-    {
-      "skill": "Generative AI",
-      "frequency": 6,
-      "percentage": 18.8,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "NumPy",
-      "frequency": 4,
-      "percentage": 12.5,
-      "category": "Data"
-    },
-    {
-      "skill": "Scikit-learn",
-      "frequency": 4,
-      "percentage": 12.5,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Linux",
-      "frequency": 4,
-      "percentage": 12.5,
-      "category": "Cloud & DevOps"
-    },
-    {
-      "skill": "Web Development",
-      "frequency": 4,
-      "percentage": 12.5,
-      "category": "Software Eng"
-    },
-    {
-      "skill": "Data Engineering",
-      "frequency": 3,
-      "percentage": 9.4,
-      "category": "Data"
-    },
-    {
-      "skill": "Algorithms",
-      "frequency": 2,
-      "percentage": 6.2,
-      "category": "Software Eng"
-    },
-    {
-      "skill": "XGBoost",
-      "frequency": 2,
-      "percentage": 6.2,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Big Data",
       "frequency": 1,
-      "percentage": 3.1,
-      "category": "Data"
-    },
-    {
-      "skill": "Calculus",
-      "frequency": 1,
-      "percentage": 3.1,
-      "category": "Mathematics"
-    },
-    {
-      "skill": "DevOps",
-      "frequency": 1,
-      "percentage": 3.1,
+      "percentage": 10.0,
       "category": "Cloud & DevOps"
     }
   ],
   "skill_per_role": {
-    "data scientist": {
-      "SQL": 7,
-      "Statistics": 3,
-      "TensorFlow": 3,
-      "NumPy": 2,
-      "Deep Learning": 5,
-      "Data Visualization": 4,
-      "Pandas": 3,
-      "Machine Learning": 8,
-      "Cloud Computing": 2,
-      "PyTorch": 2,
-      "Python": 8,
-      "Git": 3,
-      "Scikit-learn": 2,
-      "Algorithms": 1,
-      "Big Data": 1,
-      "Data Analysis": 2,
-      "NLP": 2,
-      "Linux": 1,
-      "Computer Vision": 2,
-      "Docker": 1,
-      "Data Engineering": 1,
-      "Calculus": 1,
-      "XGBoost": 1
+    "embedded systems engineer": {
+      "IoT": 2,
+      "Embedded Systems": 3,
+      "Python": 1,
+      "MATLAB": 1,
+      "Signal Processing": 1
     },
-    "data analyst": {
-      "SQL": 8,
-      "Statistics": 7,
-      "NumPy": 2,
-      "Data Visualization": 8,
-      "Pandas": 4,
-      "Data Analysis": 7,
-      "Python": 8,
-      "Git": 1
+    "VLSI engineer": {
+      "VLSI": 3,
+      "Signal Processing": 3,
+      "Manufacturing": 1,
+      "MATLAB": 1
     },
-    "machine learning engineer": {
-      "SQL": 5,
-      "Docker": 7,
-      "TensorFlow": 6,
-      "Deep Learning": 6,
-      "Machine Learning": 7,
-      "Cloud Computing": 3,
-      "Kubernetes": 4,
-      "PyTorch": 4,
-      "Python": 8,
-      "Git": 5,
-      "Scikit-learn": 2,
-      "Web Development": 1,
-      "Algorithms": 1,
-      "DevOps": 1,
-      "NLP": 3,
-      "Computer Vision": 2,
-      "XGBoost": 1,
-      "Linux": 2,
-      "Data Engineering": 1
+    "IoT engineer": {
+      "Embedded Systems": 2,
+      "IoT": 2,
+      "Python": 2,
+      "Computer Networks": 2,
+      "Signal Processing": 2,
+      "Cloud Computing": 1
     },
-    "AI engineer": {
-      "TensorFlow": 3,
-      "Generative AI": 6,
-      "Deep Learning": 7,
-      "Machine Learning": 8,
-      "Cloud Computing": 4,
-      "PyTorch": 3,
-      "Python": 8,
-      "Git": 4,
-      "NLP": 8,
-      "Docker": 5,
-      "Web Development": 3,
-      "SQL": 4,
-      "Kubernetes": 2,
-      "Computer Vision": 2,
-      "Linux": 1,
-      "Data Engineering": 1
+    "signal processing engineer": {
+      "Python": 1,
+      "Embedded Systems": 2,
+      "MATLAB": 1,
+      "Signal Processing": 1,
+      "IoT": 1
     }
   }
 }

@@ -85,6 +85,42 @@ SKILL_TAXONOMY = {
                          "gradient", "partial derivatives"],
     "Discrete Maths":   ["discrete mathematics", "discrete maths",
                          "set theory", "graph theory", "boolean algebra"],
+    # ECE & Embedded
+    "Embedded Systems": ["embedded systems", "microcontrollers", "firmware",
+                         "arduino", "raspberry pi", "rtos", "arm cortex"],
+    "VLSI":             ["vlsi", "verilog", "vhdl", "fpga", "digital circuits",
+                         "semiconductor"],
+    "IoT":              ["iot", "internet of things", "mqtt", "sensors",
+                         "wireless protocols"],
+    "Signal Processing":["signal processing", "dsp", "communications",
+                         "wireless", "fourier"],
+    "MATLAB":           ["matlab"],
+
+    # Mechanical
+    "CAD":              ["cad", "solidworks", "autocad", "catia", "creo"],
+    "FEA":              ["fea", "ansys", "finite element", "simulation"],
+    "Manufacturing":    ["manufacturing", "lean manufacturing", "six sigma",
+                         "quality control", "cnc"],
+    "Thermodynamics":   ["thermodynamics", "thermal analysis", "heat transfer",
+                         "fluid mechanics"],
+
+    # Civil
+    "Structural Analysis": ["structural analysis", "staad pro", "etabs",
+                            "structural design", "concrete", "steel design"],
+    "Surveying":        ["surveying", "gis", "geographic information",
+                         "remote sensing"],
+    "Construction Mgmt":["construction management", "project management",
+                         "site engineer", "quantity surveying"],
+
+    # Cybersecurity
+    "Network Security": ["network security", "firewalls", "network protocols",
+                         "tcp/ip", "intrusion detection"],
+    "Cryptography":     ["cryptography", "encryption", "decryption",
+                         "ssl", "tls", "hashing", "public key"],
+    "Penetration Testing": ["penetration testing", "ethical hacking",
+                            "vulnerability", "owasp", "exploit"],
+    "SIEM":             ["siem", "soc", "threat detection", "incident response",
+                         "threat intelligence"],
 }
 
 # Reverse map: alias → canonical skill
@@ -110,7 +146,14 @@ SKILL_CATEGORIES = {
     "Core CS":        ["Operating Systems", "Computer Networks",
                        "Cryptography"],
     "Mathematics":    ["Linear Algebra", "Calculus", "Discrete Maths"],
+    "ECE & Embedded": ["Embedded Systems", "VLSI", "IoT",
+                       "Signal Processing", "MATLAB"],
+    "Mechanical":     ["CAD", "FEA", "Manufacturing", "Thermodynamics"],
+    "Civil":          ["Structural Analysis", "Surveying", "Construction Mgmt"],
+    "Cybersecurity":  ["Network Security", "Cryptography",
+                       "Penetration Testing", "SIEM"],
 }
+
 
 def get_category(skill):
     for cat, skills in SKILL_CATEGORIES.items():

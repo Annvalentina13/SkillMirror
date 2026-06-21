@@ -1,6 +1,6 @@
 """
 SkillMirror — Streamlit Dashboard
-Module 4 of 4
+Module 4 of 4 — Phase 2 (Multi-role support)
 """
 
 import streamlit as st
@@ -62,6 +62,16 @@ st.markdown("""
         color: #00c853;
         margin: 4px 0;
     }
+    .role-tag {
+        background: #7c6ee022;
+        border: 1px solid #7c6ee055;
+        border-radius: 6px;
+        padding: 3px 10px;
+        color: #7c6ee0;
+        font-size: 12px;
+        display: inline-block;
+        margin-bottom: 8px;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -83,14 +93,29 @@ with st.sidebar:
         "Course name",
         value="SRM CI 2024"
     )
+
+    st.markdown("### 🎯 Target Role")
+    role_group = st.selectbox(
+        "What jobs are you targeting?",
+        options=[
+            "Data & AI",
+            "Software Engineering",
+            "Cloud & DevOps",
+            "Cybersecurity",
+            "ECE & Embedded",
+            "Mechanical",
+            "Civil",
+        ]
+    )
+
     analyse_btn = st.button("🔍 Analyse", use_container_width=True)
     st.divider()
     st.markdown("### 📌 How it works")
     st.markdown("""
     1. Upload your syllabus PDF
-    2. We extract skills from it
-    3. We compare against 30+ real JDs
-    4. You see exactly what to learn
+    2. Pick your target role
+    3. We compare against real JDs
+    4. See exactly what to learn
     """)
 
 # ── Load existing results or run analysis ─────────────────────────────────────
@@ -113,13 +138,16 @@ if analyse_btn and uploaded:
     with st.spinner("Parsing syllabus..."):
         parse_syllabus(pdf_path, course_name)
 
-    with st.spinner("Loading JD data..."):
-        scrape_jobs(use_fallback=True)
+    with st.spinner(f"Loading JD data for {role_group}..."):
+        scrape_jobs(role_group=role_group, use_fallback=True)
 
     with st.spinner("Running gap analysis..."):
         analyse_gap()
 
     st.success("Analysis complete!")
+
+elif analyse_btn and not uploaded:
+    st.warning("Please upload a syllabus PDF first!")
 
 # ── Main dashboard ────────────────────────────────────────────────────────────
 
@@ -130,6 +158,11 @@ try:
     covered = gap["covered"]
     gaps    = gap["gaps"]
     roadmap = gap["roadmap"]
+
+    # Show current role group tag
+    current_role = jd.get("role_group", "Data & AI")
+    st.markdown(f'<div class="role-tag">🎯 Analysed for: {current_role}</div>',
+                unsafe_allow_html=True)
 
     # ── Metric cards ──────────────────────────────────────────────────────────
 
@@ -172,7 +205,6 @@ try:
     with left:
         st.markdown("### 📊 Skills Heatmap")
 
-        # Build heatmap data
         all_skills = (
             [{"skill": s["skill"], "demand": s["demand"],
               "status": "✅ Covered"} for s in covered] +
@@ -205,7 +237,7 @@ try:
 
     with right:
         st.markdown("### 🗺️ Your Learning Roadmap")
-        st.caption("Skills missing from your syllabus, ranked by industry demand")
+        st.caption(f"Skills missing from your syllabus for {current_role} roles")
 
         if roadmap:
             for i, skill in enumerate(roadmap, 1):
@@ -265,12 +297,34 @@ try:
     )
     st.plotly_chart(fig2, use_container_width=True)
 
+    # ── Roles covered ─────────────────────────────────────────────────────────
+
+    st.divider()
+    st.markdown("### 💼 Roles in this Analysis")
+    roles = jd.get("roles_covered", [])
+    cols = st.columns(len(roles))
+    for i, role in enumerate(roles):
+        with cols[i]:
+            st.markdown(f"""
+            <div class="metric-card" style="padding:0.8rem">
+                <div style="font-size:13px;color:#c9d1d9">{role}</div>
+            </div>""", unsafe_allow_html=True)
+
 except FileNotFoundError:
-    st.info("👈 Upload your syllabus PDF and click Analyse to get started!")
+    st.info("👈 Upload your syllabus PDF, pick your target role and click Analyse!")
     st.markdown("""
     ### What SkillMirror does
     - 📄 Parses your syllabus PDF
-    - 🔍 Scrapes real job descriptions
+    - 🎯 Compares against your target role's JDs
     - 📊 Shows you the exact skills gap
     - 🗺️ Gives you a prioritised learning roadmap
+    
+    ### Supported roles
+    - 📊 Data & AI
+    - 💻 Software Engineering
+    - ☁️ Cloud & DevOps
+    - 🔐 Cybersecurity
+    - ⚡ ECE & Embedded
+    - ⚙️ Mechanical
+    - 🏗️ Civil
     """)
