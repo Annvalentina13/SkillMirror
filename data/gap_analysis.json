@@ -1,0 +1,223 @@
+{
+  "summary": {
+    "syllabus_skills_count": 35,
+    "industry_skills_count": 27,
+    "covered_count": 24,
+    "gap_count": 3,
+    "coverage_score": 88.9,
+    "gap_severity": 4.4
+  },
+  "covered": [
+    {
+      "skill": "Python",
+      "demand": 100.0,
+      "status": "covered"
+    },
+    {
+      "skill": "SQL",
+      "demand": 75.0,
+      "status": "covered"
+    },
+    {
+      "skill": "Machine Learning",
+      "demand": 71.9,
+      "status": "covered"
+    },
+    {
+      "skill": "Deep Learning",
+      "demand": 56.2,
+      "status": "covered"
+    },
+    {
+      "skill": "Git",
+      "demand": 40.6,
+      "status": "covered"
+    },
+    {
+      "skill": "NLP",
+      "demand": 40.6,
+      "status": "covered"
+    },
+    {
+      "skill": "Docker",
+      "demand": 40.6,
+      "status": "covered"
+    },
+    {
+      "skill": "TensorFlow",
+      "demand": 37.5,
+      "status": "covered"
+    },
+    {
+      "skill": "Data Visualization",
+      "demand": 37.5,
+      "status": "covered"
+    },
+    {
+      "skill": "Statistics",
+      "demand": 31.2,
+      "status": "covered"
+    },
+    {
+      "skill": "Cloud Computing",
+      "demand": 28.1,
+      "status": "covered"
+    },
+    {
+      "skill": "PyTorch",
+      "demand": 28.1,
+      "status": "covered"
+    },
+    {
+      "skill": "Data Analysis",
+      "demand": 28.1,
+      "status": "covered"
+    },
+    {
+      "skill": "Pandas",
+      "demand": 21.9,
+      "status": "covered"
+    },
+    {
+      "skill": "Computer Vision",
+      "demand": 18.8,
+      "status": "covered"
+    },
+    {
+      "skill": "Generative AI",
+      "demand": 18.8,
+      "status": "covered"
+    },
+    {
+      "skill": "NumPy",
+      "demand": 12.5,
+      "status": "covered"
+    },
+    {
+      "skill": "Scikit-learn",
+      "demand": 12.5,
+      "status": "covered"
+    },
+    {
+      "skill": "Linux",
+      "demand": 12.5,
+      "status": "covered"
+    },
+    {
+      "skill": "Web Development",
+      "demand": 12.5,
+      "status": "covered"
+    },
+    {
+      "skill": "Algorithms",
+      "demand": 6.2,
+      "status": "covered"
+    },
+    {
+      "skill": "Big Data",
+      "demand": 3.1,
+      "status": "covered"
+    },
+    {
+      "skill": "Calculus",
+      "demand": 3.1,
+      "status": "covered"
+    },
+    {
+      "skill": "DevOps",
+      "demand": 3.1,
+      "status": "covered"
+    }
+  ],
+  "gaps": [
+    {
+      "skill": "Kubernetes",
+      "demand": 18.8,
+      "status": "gap"
+    },
+    {
+      "skill": "Data Engineering",
+      "demand": 9.4,
+      "status": "gap"
+    },
+    {
+      "skill": "XGBoost",
+      "demand": 6.2,
+      "status": "gap"
+    }
+  ],
+  "low_demand": [
+    {
+      "skill": "Computer Networks",
+      "demand": 0,
+      "status": "low_demand"
+    },
+    {
+      "skill": "Data Structures",
+      "demand": 0,
+      "status": "low_demand"
+    },
+    {
+      "skill": "Operating Systems",
+      "demand": 0,
+      "status": "low_demand"
+    },
+    {
+      "skill": "Databases",
+      "demand": 0,
+      "status": "low_demand"
+    },
+    {
+      "skill": "Linear Algebra",
+      "demand": 0,
+      "status": "low_demand"
+    },
+    {
+      "skill": "Cryptography",
+      "demand": 0,
+      "status": "low_demand"
+    },
+    {
+      "skill": "Java",
+      "demand": 0,
+      "status": "low_demand"
+    },
+    {
+      "skill": "JavaScript",
+      "demand": 0,
+      "status": "low_demand"
+    },
+    {
+      "skill": "OOP",
+      "demand": 0,
+      "status": "low_demand"
+    },
+    {
+      "skill": "Discrete Maths",
+      "demand": 0,
+      "status": "low_demand"
+    },
+    {
+      "skill": "R",
+      "demand": 0,
+      "status": "low_demand"
+    }
+  ],
+  "roadmap": [
+    {
+      "skill": "Kubernetes",
+      "demand": 18.8,
+      "status": "gap"
+    },
+    {
+      "skill": "Data Engineering",
+      "demand": 9.4,
+      "status": "gap"
+    },
+    {
+      "skill": "XGBoost",
+      "demand": 6.2,
+      "status": "gap"
+    }
+  ]
+}
