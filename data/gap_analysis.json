@@ -1,83 +1,144 @@
 {
   "summary": {
-    "syllabus_skills_count": 47,
-    "industry_skills_count": 9,
-    "covered_count": 9,
-    "gap_count": 0,
-    "coverage_score": 100.0,
-    "gap_severity": 0.0
+    "syllabus_skills_count": 49,
+    "industry_skills_count": 24,
+    "covered_count": 23,
+    "gap_count": 1,
+    "coverage_score": 95.8,
+    "gap_severity": 3.8
   },
   "covered": [
     {
-      "skill": "Embedded Systems",
-      "demand": 70.0,
+      "skill": "Python",
+      "demand": 100.0,
       "status": "covered"
     },
     {
-      "skill": "Signal Processing",
-      "demand": 70.0,
+      "skill": "Machine Learning",
+      "demand": 90.0,
       "status": "covered"
     },
     {
-      "skill": "IoT",
+      "skill": "SQL",
+      "demand": 80.0,
+      "status": "covered"
+    },
+    {
+      "skill": "Deep Learning",
+      "demand": 60.0,
+      "status": "covered"
+    },
+    {
+      "skill": "Data Visualization",
       "demand": 50.0,
       "status": "covered"
     },
     {
-      "skill": "Python",
+      "skill": "Statistics",
       "demand": 40.0,
       "status": "covered"
     },
     {
-      "skill": "VLSI",
-      "demand": 30.0,
-      "status": "covered"
-    },
-    {
-      "skill": "MATLAB",
-      "demand": 30.0,
-      "status": "covered"
-    },
-    {
-      "skill": "Computer Networks",
-      "demand": 20.0,
-      "status": "covered"
-    },
-    {
-      "skill": "Manufacturing",
-      "demand": 10.0,
+      "skill": "Pandas",
+      "demand": 40.0,
       "status": "covered"
     },
     {
       "skill": "Cloud Computing",
+      "demand": 30.0,
+      "status": "covered"
+    },
+    {
+      "skill": "NumPy",
+      "demand": 30.0,
+      "status": "covered"
+    },
+    {
+      "skill": "TensorFlow",
+      "demand": 30.0,
+      "status": "covered"
+    },
+    {
+      "skill": "NLP",
+      "demand": 30.0,
+      "status": "covered"
+    },
+    {
+      "skill": "Data Analysis",
+      "demand": 30.0,
+      "status": "covered"
+    },
+    {
+      "skill": "PyTorch",
+      "demand": 20.0,
+      "status": "covered"
+    },
+    {
+      "skill": "Scikit-learn",
+      "demand": 20.0,
+      "status": "covered"
+    },
+    {
+      "skill": "Docker",
+      "demand": 20.0,
+      "status": "covered"
+    },
+    {
+      "skill": "Computer Vision",
+      "demand": 20.0,
+      "status": "covered"
+    },
+    {
+      "skill": "Big Data",
+      "demand": 10.0,
+      "status": "covered"
+    },
+    {
+      "skill": "Linux",
+      "demand": 10.0,
+      "status": "covered"
+    },
+    {
+      "skill": "Data Engineering",
+      "demand": 10.0,
+      "status": "covered"
+    },
+    {
+      "skill": "XGBoost",
+      "demand": 10.0,
+      "status": "covered"
+    },
+    {
+      "skill": "Calculus",
+      "demand": 10.0,
+      "status": "covered"
+    },
+    {
+      "skill": "Generative AI",
+      "demand": 10.0,
+      "status": "covered"
+    },
+    {
+      "skill": "Web Development",
       "demand": 10.0,
       "status": "covered"
     }
   ],
-  "gaps": [],
-  "low_demand": [
+  "gaps": [
     {
-      "skill": "Machine Learning",
-      "demand": 0,
-      "status": "low_demand"
-    },
+      "skill": "Git",
+      "demand": 30.0,
+      "status": "gap"
+    }
+  ],
+  "low_demand": [
     {
       "skill": "Algorithms",
       "demand": 0,
       "status": "low_demand"
     },
     {
-      "skill": "Statistics",
-      "demand": 0,
-      "status": "low_demand"
-    },
-    {
-      "skill": "Data Analysis",
-      "demand": 0,
-      "status": "low_demand"
-    },
-    {
-      "skill": "Big Data",
+      "skill": "IoT",
       "demand": 0,
       "status": "low_demand"
     },
@@ -87,27 +148,7 @@
       "status": "low_demand"
     },
     {
-      "skill": "Deep Learning",
-      "demand": 0,
-      "status": "low_demand"
-    },
-    {
-      "skill": "Operating Systems",
-      "demand": 0,
-      "status": "low_demand"
-    },
-    {
-      "skill": "Cryptography",
-      "demand": 0,
-      "status": "low_demand"
-    },
-    {
-      "skill": "FEA",
-      "demand": 0,
-      "status": "low_demand"
-    },
-    {
-      "skill": "Data Visualization",
+      "skill": "Computer Networks",
       "demand": 0,
       "status": "low_demand"
     },
@@ -117,17 +158,7 @@
       "status": "low_demand"
     },
     {
-      "skill": "Calculus",
-      "demand": 0,
-      "status": "low_demand"
-    },
-    {
-      "skill": "OOP",
-      "demand": 0,
-      "status": "low_demand"
-    },
-    {
-      "skill": "Network Security",
+      "skill": "Operating Systems",
       "demand": 0,
       "status": "low_demand"
     },
@@ -137,22 +168,7 @@
       "status": "low_demand"
     },
     {
-      "skill": "Linux",
-      "demand": 0,
-      "status": "low_demand"
-    },
-    {
-      "skill": "SIEM",
-      "demand": 0,
-      "status": "low_demand"
-    },
-    {
-      "skill": "SQL",
-      "demand": 0,
-      "status": "low_demand"
-    },
-    {
-      "skill": "CAD",
+      "skill": "Signal Processing",
       "demand": 0,
       "status": "low_demand"
     },
@@ -162,7 +178,17 @@
       "status": "low_demand"
     },
     {
-      "skill": "Computer Vision",
+      "skill": "Embedded Systems",
+      "demand": 0,
+      "status": "low_demand"
+    },
+    {
+      "skill": "FEA",
+      "demand": 0,
+      "status": "low_demand"
+    },
+    {
+      "skill": "Construction Mgmt",
       "demand": 0,
       "status": "low_demand"
     },
@@ -172,42 +198,32 @@
       "status": "low_demand"
     },
     {
-      "skill": "Pandas",
+      "skill": "OOP",
       "demand": 0,
       "status": "low_demand"
     },
     {
-      "skill": "C",
+      "skill": "Kubernetes",
       "demand": 0,
       "status": "low_demand"
     },
     {
-      "skill": "Web Development",
+      "skill": "Manufacturing",
       "demand": 0,
       "status": "low_demand"
     },
     {
-      "skill": "TensorFlow",
+      "skill": "MATLAB",
       "demand": 0,
       "status": "low_demand"
     },
     {
-      "skill": "Git",
+      "skill": "Network Security",
       "demand": 0,
       "status": "low_demand"
     },
     {
-      "skill": "NumPy",
-      "demand": 0,
-      "status": "low_demand"
-    },
-    {
-      "skill": "R",
-      "demand": 0,
-      "status": "low_demand"
-    },
-    {
-      "skill": "Scikit-learn",
+      "skill": "Cryptography",
       "demand": 0,
       "status": "low_demand"
     },
@@ -217,17 +233,17 @@
       "status": "low_demand"
     },
     {
-      "skill": "Thermodynamics",
+      "skill": "VLSI",
       "demand": 0,
       "status": "low_demand"
     },
     {
-      "skill": "NLP",
+      "skill": "CAD",
       "demand": 0,
       "status": "low_demand"
     },
     {
-      "skill": "Data Engineering",
+      "skill": "C",
       "demand": 0,
       "status": "low_demand"
     },
@@ -237,15 +253,21 @@
       "status": "low_demand"
     },
     {
-      "skill": "Penetration Testing",
+      "skill": "DevOps",
       "demand": 0,
       "status": "low_demand"
     },
     {
-      "skill": "Generative AI",
+      "skill": "SIEM",
       "demand": 0,
       "status": "low_demand"
     }
   ],
-  "roadmap": []
+  "roadmap": [
+    {
+      "skill": "Git",
+      "demand": 30.0,
+      "status": "gap"
+    }
+  ]
 }

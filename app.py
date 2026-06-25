@@ -1,6 +1,6 @@
 """
 SkillMirror — Streamlit Dashboard
-Module 4 of 4 — Phase 2 (Multi-role support)
+Module 4 of 4 — Phase 3 (AI Roadmap integrated)
 """
 
 import streamlit as st
@@ -15,6 +15,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from modules.parser import parse_syllabus
 from modules.scraper import scrape_jobs
 from modules.gap_engine import analyse_gap
+from modules.roadmap import generate_skill_roadmap
 
 # ── Page config ───────────────────────────────────────────────────────────────
 
@@ -118,7 +119,7 @@ with st.sidebar:
     4. See exactly what to learn
     """)
 
-# ── Load existing results or run analysis ─────────────────────────────────────
+# ── Load results ──────────────────────────────────────────────────────────────
 
 def load_results():
     with open("data/gap_analysis.json") as f:
@@ -130,7 +131,6 @@ def load_results():
     return gap, syllabus, jd
 
 if analyse_btn and uploaded:
-    # Save uploaded PDF
     pdf_path = f"data/{uploaded.name}"
     with open(pdf_path, "wb") as f:
         f.write(uploaded.getbuffer())
@@ -159,10 +159,12 @@ try:
     gaps    = gap["gaps"]
     roadmap = gap["roadmap"]
 
-    # Show current role group tag
+    # Role tag
     current_role = jd.get("role_group", "Data & AI")
-    st.markdown(f'<div class="role-tag">🎯 Analysed for: {current_role}</div>',
-                unsafe_allow_html=True)
+    st.markdown(
+        f'<div class="role-tag">🎯 Analysed for: {current_role}</div>',
+        unsafe_allow_html=True
+    )
 
     # ── Metric cards ──────────────────────────────────────────────────────────
 
@@ -185,7 +187,8 @@ try:
     with c3:
         st.markdown(f"""
         <div class="metric-card">
-            <div class="metric-value" style="color:#ff4b4b">{summary['gap_count']}</div>
+            <div class="metric-value" style="color:#ff4b4b">
+            {summary['gap_count']}</div>
             <div class="metric-label">Skills Missing</div>
         </div>""", unsafe_allow_html=True)
 
@@ -263,6 +266,77 @@ try:
 
     st.divider()
 
+    # ── Detailed Roadmap Section ──────────────────────────────────────────────
+
+    st.markdown("### 🗺️ Detailed Learning Roadmap")
+    st.caption("Click any skill to see your personalised learning plan")
+
+    if roadmap:
+        for skill_data in roadmap:
+            skill_name = skill_data["skill"]
+            demand     = skill_data["demand"]
+
+            plan = generate_skill_roadmap(skill_name, current_role, demand)
+
+            with st.expander(
+                f"📚 {skill_name} — {demand}% of JDs | "
+                f"⏱ {plan['time_estimate']} | "
+                f"{'🟢' if plan['difficulty'] == 'Beginner' else '🟡' if plan['difficulty'] == 'Intermediate' else '🔴'} "
+                f"{plan['difficulty']}"
+            ):
+                st.markdown(
+                    f"**Why it matters:** {plan['why_it_matters']}"
+                )
+
+                col1, col2 = st.columns(2)
+
+                with col1:
+                    st.markdown("**📅 Weekly Plan**")
+                    for week in plan["weekly_plan"]:
+                        st.markdown(f"""
+                        <div style="background:#1e2130;border-radius:8px;
+                        padding:10px;margin:4px 0;
+                        border-left:3px solid #7c6ee0">
+                            <b>Week {week['week']}</b> — {week['focus']}<br>
+                            <span style="color:#00c853;font-size:12px">
+                            🎯 Goal: {week['goal']}</span>
+                        </div>
+                        """, unsafe_allow_html=True)
+
+                with col2:
+                    st.markdown("**🔗 Free Resources**")
+                    for res in plan["free_resources"]:
+                        icon = {
+                            "Video": "📹", "Book": "📖",
+                            "Course": "🎓", "Interactive": "💻",
+                            "Docs": "📄", "Practice": "🏋️",
+                            "Software": "💾", "Article": "📰"
+                        }.get(res["type"], "🔗")
+                        st.markdown(
+                            f"{icon} [{res['name']}]({res['url']}) "
+                            f"— {res['type']}"
+                        )
+
+                st.markdown("**🏗️ Project to Build**")
+                st.markdown(f"""
+                <div style="background:#1e2130;border-radius:8px;
+                padding:12px;border-left:3px solid #00c853">
+                    <b>{plan['project_to_build']['name']}</b><br>
+                    {plan['project_to_build']['description']}<br>
+                    <span style="color:#8b8fa8;font-size:12px">
+                    💡 {plan['project_to_build']['why']}</span>
+                </div>
+                """, unsafe_allow_html=True)
+
+                st.markdown("**💡 Pro Tips**")
+                for tip in plan["tips"]:
+                    st.markdown(f"- {tip}")
+
+    else:
+        st.success("🎉 No gaps! Your syllabus covers everything.")
+
+    st.divider()
+
     # ── Category breakdown ────────────────────────────────────────────────────
 
     st.markdown("### 🗂️ Coverage by Category")
@@ -277,7 +351,7 @@ try:
         cat_data.setdefault(cat, {"covered": 0, "gap": 0})
         cat_data[cat]["gap"] += 1
 
-    cats = list(cat_data.keys())
+    cats           = list(cat_data.keys())
     covered_counts = [cat_data[c]["covered"] for c in cats]
     gap_counts     = [cat_data[c]["gap"] for c in cats]
 
@@ -302,7 +376,7 @@ try:
     st.divider()
     st.markdown("### 💼 Roles in this Analysis")
     roles = jd.get("roles_covered", [])
-    cols = st.columns(len(roles))
+    cols  = st.columns(len(roles))
     for i, role in enumerate(roles):
         with cols[i]:
             st.markdown(f"""
@@ -311,14 +385,18 @@ try:
             </div>""", unsafe_allow_html=True)
 
 except FileNotFoundError:
-    st.info("👈 Upload your syllabus PDF, pick your target role and click Analyse!")
+    st.info(
+        "👈 Upload your syllabus PDF, pick your target role "
+        "and click Analyse!"
+    )
     st.markdown("""
     ### What SkillMirror does
     - 📄 Parses your syllabus PDF
     - 🎯 Compares against your target role's JDs
     - 📊 Shows you the exact skills gap
-    - 🗺️ Gives you a prioritised learning roadmap
-    
+    - 🗺️ Gives you a detailed personalised roadmap
+    - 🔗 Free resources + projects for every gap skill
+
     ### Supported roles
     - 📊 Data & AI
     - 💻 Software Engineering
