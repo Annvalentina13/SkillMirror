@@ -106,6 +106,11 @@ with st.sidebar:
             "ECE & Embedded",
             "Mechanical",
             "Civil",
+            "Finance & MBA",
+            "Medical & Healthcare",
+            "Law",
+            "Design & UX",
+            "Media & Marketing",
         ]
     )
 

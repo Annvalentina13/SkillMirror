@@ -121,6 +121,58 @@ SKILL_TAXONOMY = {
                             "vulnerability", "owasp", "exploit"],
     "SIEM":             ["siem", "soc", "threat detection", "incident response",
                          "threat intelligence"],
+    # Finance & MBA
+    "Financial Modeling": ["financial modeling", "dcf", "lbo", "valuation",
+                           "forecasting", "budgeting", "financial analysis"],
+    "Excel":              ["excel", "vba", "spreadsheet", "pivot table",
+                           "vlookup", "power bi", "tableau"],
+    "Accounting":         ["accounting", "financial statements", "balance sheet",
+                           "income statement", "m&a", "investment banking"],
+    "Business Analysis":  ["business analysis", "requirements gathering",
+                           "stakeholder management", "agile", "scrum",
+                           "product management", "roadmap", "user research"],
+
+    # Medical & Healthcare
+    "Clinical Research":  ["clinical research", "clinical trials", "medical research",
+                           "clinical data", "medical coding", "health informatics"],
+    "Medical Statistics": ["spss", "sas", "r statistics", "biostatistics",
+                           "statistical analysis", "clinical data analysis"],
+    "Healthcare Mgmt":    ["healthcare management", "hospital administration",
+                           "health informatics", "healthcare analytics"],
+
+    # Law
+    "Legal Research":     ["legal research", "case law", "legal analysis",
+                           "legal writing", "jurisprudence"],
+    "Contract Law":       ["contract drafting", "contract review",
+                           "contract management", "legal drafting"],
+    "Compliance":         ["compliance", "regulatory compliance",
+                           "corporate law", "intellectual property",
+                           "patent", "regulatory"],
+
+    # Design & UX
+    "Figma":              ["figma", "adobe xd", "sketch", "prototyping",
+                           "wireframing", "mockup"],
+    "UI Design":          ["ui design", "user interface", "visual design",
+                           "typography", "branding", "graphic design"],
+    "UX Research":        ["ux research", "user research", "usability testing",
+                           "user experience", "interaction design"],
+    "Adobe Suite":        ["adobe photoshop", "photoshop", "illustrator",
+                           "indesign", "adobe suite", "motion design"],
+
+    # Media & Marketing
+    "SEO":                ["seo", "search engine optimization", "sem",
+                           "search engine marketing", "keyword research",
+                           "link building"],
+    "Google Analytics":   ["google analytics", "web analytics", "ga4",
+                           "google ads", "digital analytics"],
+    "Social Media":       ["social media", "instagram", "facebook", "twitter",
+                           "linkedin marketing", "content creation",
+                           "social media management"],
+    "Content Marketing":  ["content marketing", "content strategy",
+                           "copywriting", "content writing", "blogging"],
+    "Digital Marketing":  ["digital marketing", "online marketing",
+                           "email marketing", "marketing analytics",
+                           "growth hacking"],
 }
 
 # Reverse map: alias → canonical skill
@@ -152,6 +204,14 @@ SKILL_CATEGORIES = {
     "Civil":          ["Structural Analysis", "Surveying", "Construction Mgmt"],
     "Cybersecurity":  ["Network Security", "Cryptography",
                        "Penetration Testing", "SIEM"],
+    "Finance & MBA":  ["Financial Modeling", "Excel", "Accounting",
+                       "Business Analysis"],
+    "Medical":        ["Clinical Research", "Medical Statistics",
+                       "Healthcare Mgmt"],
+    "Law":            ["Legal Research", "Contract Law", "Compliance"],
+    "Design & UX":    ["Figma", "UI Design", "UX Research", "Adobe Suite"],
+    "Marketing":      ["SEO", "Google Analytics", "Social Media",
+                       "Content Marketing", "Digital Marketing"],
 }
 
 

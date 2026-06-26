@@ -1,42 +1,42 @@
 {
   "total_jds": 10,
-  "role_group": "Data & AI",
+  "role_group": "Finance & MBA",
   "roles_covered": [
-    "data scientist",
-    "data analyst",
-    "machine learning engineer",
-    "AI engineer"
+    "financial analyst",
+    "investment banking analyst",
+    "business analyst",
+    "product manager"
   ],
   "skills_ranked": [
     {
-      "skill": "Python",
+      "skill": "Excel",
       "frequency": 10,
       "percentage": 100.0,
-      "category": "Programming"
-    },
-    {
-      "skill": "Machine Learning",
-      "frequency": 9,
-      "percentage": 90.0,
-      "category": "AI / ML"
+      "category": "Finance & MBA"
     },
     {
       "skill": "SQL",
-      "frequency": 8,
-      "percentage": 80.0,
+      "frequency": 9,
+      "percentage": 90.0,
       "category": "Programming"
     },
     {
-      "skill": "Deep Learning",
-      "frequency": 6,
-      "percentage": 60.0,
-      "category": "AI / ML"
+      "skill": "Data Analysis",
+      "frequency": 7,
+      "percentage": 70.0,
+      "category": "Data"
     },
     {
-      "skill": "Data Visualization",
+      "skill": "Python",
+      "frequency": 6,
+      "percentage": 60.0,
+      "category": "Programming"
+    },
+    {
+      "skill": "Financial Modeling",
       "frequency": 5,
       "percentage": 50.0,
-      "category": "Data"
+      "category": "Finance & MBA"
     },
     {
       "skill": "Statistics",
@@ -45,172 +45,62 @@
       "category": "Data"
     },
     {
-      "skill": "Pandas",
+      "skill": "Business Analysis",
       "frequency": 4,
       "percentage": 40.0,
-      "category": "Data"
+      "category": "Finance & MBA"
     },
     {
-      "skill": "Cloud Computing",
+      "skill": "Accounting",
       "frequency": 3,
       "percentage": 30.0,
-      "category": "Cloud & DevOps"
+      "category": "Finance & MBA"
     },
     {
-      "skill": "Git",
-      "frequency": 3,
-      "percentage": 30.0,
-      "category": "Cloud & DevOps"
-    },
-    {
-      "skill": "NumPy",
-      "frequency": 3,
-      "percentage": 30.0,
-      "category": "Data"
-    },
-    {
-      "skill": "TensorFlow",
-      "frequency": 3,
-      "percentage": 30.0,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "NLP",
-      "frequency": 3,
-      "percentage": 30.0,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Data Analysis",
-      "frequency": 3,
-      "percentage": 30.0,
-      "category": "Data"
-    },
-    {
-      "skill": "PyTorch",
+      "skill": "UX Research",
       "frequency": 2,
       "percentage": 20.0,
-      "category": "AI / ML"
+      "category": "Design & UX"
     },
     {
-      "skill": "Scikit-learn",
-      "frequency": 2,
-      "percentage": 20.0,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Docker",
-      "frequency": 2,
-      "percentage": 20.0,
-      "category": "Cloud & DevOps"
-    },
-    {
-      "skill": "Computer Vision",
-      "frequency": 2,
-      "percentage": 20.0,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Big Data",
+      "skill": "Data Visualization",
       "frequency": 1,
       "percentage": 10.0,
       "category": "Data"
-    },
-    {
-      "skill": "Linux",
-      "frequency": 1,
-      "percentage": 10.0,
-      "category": "Cloud & DevOps"
-    },
-    {
-      "skill": "Data Engineering",
-      "frequency": 1,
-      "percentage": 10.0,
-      "category": "Data"
-    },
-    {
-      "skill": "XGBoost",
-      "frequency": 1,
-      "percentage": 10.0,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Calculus",
-      "frequency": 1,
-      "percentage": 10.0,
-      "category": "Mathematics"
-    },
-    {
-      "skill": "Generative AI",
-      "frequency": 1,
-      "percentage": 10.0,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Web Development",
-      "frequency": 1,
-      "percentage": 10.0,
-      "category": "Software Eng"
     }
   ],
   "skill_per_role": {
-    "data scientist": {
-      "SQL": 2,
-      "Python": 3,
-      "Cloud Computing": 2,
-      "Deep Learning": 2,
-      "PyTorch": 1,
-      "Git": 1,
-      "Data Visualization": 2,
-      "NumPy": 2,
-      "Statistics": 2,
-      "TensorFlow": 1,
-      "Machine Learning": 3,
-      "Scikit-learn": 2,
-      "Pandas": 2,
+    "financial analyst": {
       "Data Analysis": 1,
-      "Docker": 1,
-      "Generative AI": 1,
-      "Web Development": 1,
-      "NLP": 1
-    },
-    "data analyst": {
-      "SQL": 3,
-      "Python": 3,
-      "Big Data": 1,
-      "Statistics": 2,
-      "Machine Learning": 2,
-      "NLP": 2,
-      "Data Analysis": 2,
-      "Deep Learning": 1,
-      "Data Engineering": 1,
-      "Data Visualization": 1,
-      "NumPy": 1,
-      "Pandas": 1
-    },
-    "machine learning engineer": {
-      "Deep Learning": 1,
-      "Python": 2,
-      "Data Visualization": 2,
-      "Machine Learning": 2,
-      "SQL": 1,
-      "Git": 1,
-      "XGBoost": 1,
-      "Pandas": 1,
-      "Calculus": 1
-    },
-    "AI engineer": {
+      "Financial Modeling": 3,
+      "Accounting": 3,
       "SQL": 2,
-      "Python": 2,
-      "Docker": 1,
-      "Linux": 1,
-      "Deep Learning": 2,
-      "Git": 1,
-      "Computer Vision": 2,
-      "TensorFlow": 2,
-      "Machine Learning": 2,
-      "Cloud Computing": 1,
-      "PyTorch": 1
+      "Excel": 3,
+      "Python": 2
+    },
+    "investment banking analyst": {
+      "Financial Modeling": 2,
+      "Data Visualization": 1,
+      "Statistics": 3,
+      "SQL": 3,
+      "Excel": 3,
+      "Python": 3,
+      "Data Analysis": 2
+    },
+    "business analyst": {
+      "Data Analysis": 2,
+      "Statistics": 1,
+      "SQL": 2,
+      "Excel": 2,
+      "Python": 1,
+      "Business Analysis": 2
+    },
+    "product manager": {
+      "Data Analysis": 2,
+      "UX Research": 2,
+      "SQL": 2,
+      "Excel": 2,
+      "Business Analysis": 2
     }
   }
 }
