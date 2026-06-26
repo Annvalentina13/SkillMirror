@@ -1,0 +1,11 @@
+pdfplumber
+keybert
+scikit-learn
+nltk
+streamlit
+plotly
+pandas
+requests
+beautifulsoup4
+python-dotenv
+reportlab
