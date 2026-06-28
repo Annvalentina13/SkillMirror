@@ -1,6 +1,6 @@
 """
 SkillMirror — Streamlit Dashboard
-Phase 5 — College Comparison added
+Phase 6 — Resume Upload Mode added
 """
 
 import streamlit as st
@@ -17,6 +17,7 @@ from modules.scraper import scrape_jobs
 from modules.gap_engine import analyse_gap
 from modules.roadmap import generate_skill_roadmap
 from modules.compare import compare_colleges
+from modules.resume import analyse_resume
 
 # ── Page config ───────────────────────────────────────────────────────────────
 
@@ -261,7 +262,27 @@ st.markdown("""
         justify-content: space-between;
     }
 
-    /* Native metric styling */
+    .grade-card {
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+    }
+    .grade-value {
+        font-size: 4rem;
+        font-weight: 700;
+        letter-spacing: -2px;
+    }
+    .skill-chip {
+        display: inline-block;
+        background: #161b22;
+        border: 1px solid #21262d;
+        border-radius: 20px;
+        padding: 4px 12px;
+        font-size: 12px;
+        color: #8b949e;
+        margin: 3px;
+    }
+
     [data-testid="metric-container"] {
         background: #161b22;
         border: 1px solid #21262d;
@@ -313,7 +334,7 @@ with st.sidebar:
 
     mode = st.radio(
         "Mode",
-        options=["🔍 Analyse", "🏫 Compare"],
+        options=["🔍 Analyse", "🏫 Compare", "📄 Resume"],
         label_visibility="collapsed",
         horizontal=True
     )
@@ -349,7 +370,7 @@ with st.sidebar:
         st.markdown("<br>", unsafe_allow_html=True)
         analyse_btn = st.button("Analyse →", use_container_width=True)
 
-    else:
+    elif mode == "🏫 Compare":
         st.markdown(
             '<div style="font-size:11px;font-weight:500;color:#484f58;'
             'text-transform:uppercase;letter-spacing:.06em;'
@@ -391,6 +412,54 @@ with st.sidebar:
         st.markdown("<br>", unsafe_allow_html=True)
         compare_btn = st.button("Compare →", use_container_width=True)
 
+    else:  # Resume mode
+        st.markdown(
+            '<div style="font-size:11px;font-weight:500;color:#484f58;'
+            'text-transform:uppercase;letter-spacing:.06em;'
+            'margin-bottom:8px">Your Resume</div>',
+            unsafe_allow_html=True
+        )
+        resume_pdf = st.file_uploader(
+            "Resume PDF", type=["pdf"],
+            label_visibility="collapsed", key="resume_pdf"
+        )
+        if not resume_pdf:
+            st.markdown(
+                '<div style="font-size:11px;color:#484f58;'
+                'margin-top:-8px;margin-bottom:8px">'
+                'Upload your resume PDF</div>',
+                unsafe_allow_html=True
+            )
+        st.markdown(
+            '<div style="font-size:11px;font-weight:500;color:#484f58;'
+            'text-transform:uppercase;letter-spacing:.06em;'
+            'margin-top:16px;margin-bottom:8px">Target Role</div>',
+            unsafe_allow_html=True
+        )
+        resume_role = st.selectbox(
+            "Role", options=ROLE_OPTIONS,
+            label_visibility="collapsed", key="resume_role"
+        )
+        also_compare_syllabus = st.checkbox(
+            "Also compare against my syllabus",
+            value=False
+        )
+        if also_compare_syllabus:
+            syllabus_pdf = st.file_uploader(
+                "Syllabus PDF", type=["pdf"],
+                label_visibility="collapsed",
+                key="syllabus_for_resume"
+            )
+            syllabus_course = st.text_input(
+                "Course name", value="My Syllabus",
+                key="syllabus_course_resume"
+            )
+        st.markdown("<br>", unsafe_allow_html=True)
+        resume_btn = st.button(
+            "Analyse Resume →",
+            use_container_width=True
+        )
+
     st.markdown("""
     <div style="border-top:1px solid #21262d;padding-top:16px;
     margin-top:16px">
@@ -398,7 +467,7 @@ with st.sidebar:
         text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">
         How it works</div>
         <div style="font-size:12px;color:#484f58;line-height:1.8">
-        1. Upload syllabus PDF<br>
+        1. Upload syllabus / resume<br>
         2. Pick target role<br>
         3. Get gap analysis<br>
         4. Follow your roadmap
@@ -419,6 +488,10 @@ def load_results():
 
 def load_comparison():
     with open("data/comparison.json") as f:
+        return json.load(f)
+
+def load_resume_analysis():
+    with open("data/resume_analysis.json") as f:
         return json.load(f)
 
 # ── ANALYSE MODE ──────────────────────────────────────────────────────────────
@@ -696,14 +769,6 @@ if mode == "🔍 Analyse":
                             f'<div class="roadmap-tip">→ {tip}</div>',
                             unsafe_allow_html=True
                         )
-        else:
-            st.markdown("""
-            <div style="background:#0d1a0f;border:1px solid #1a4a20;
-            border-radius:8px;padding:20px;color:#3fb950;font-size:14px;
-            text-align:center">
-                🎉 No gaps found — your syllabus covers everything!
-            </div>
-            """, unsafe_allow_html=True)
 
         st.markdown('<hr style="margin:2rem 0">', unsafe_allow_html=True)
 
@@ -801,7 +866,7 @@ if mode == "🔍 Analyse":
 
 # ── COMPARE MODE ──────────────────────────────────────────────────────────────
 
-else:
+elif mode == "🏫 Compare":
     st.markdown("""
     <div class="hero-title">🏫 College Comparison</div>
     <div class="hero-sub">Compare two colleges side by side
@@ -830,14 +895,13 @@ else:
             st.success("Comparison complete!")
 
     try:
-        comp = load_comparison()
-        r    = comp["results"]
-        n1   = comp["college_1"]
-        n2   = comp["college_2"]
-        role = comp["role_group"]
+        comp   = load_comparison()
+        r      = comp["results"]
+        n1     = comp["college_1"]
+        n2     = comp["college_2"]
+        role   = comp["role_group"]
         winner = comp["winner"]
 
-        # Winner banner
         if winner["college"] == "Tie":
             st.markdown(f"""
             <div style="background:#161b22;border:1px solid #21262d;
@@ -862,9 +926,7 @@ else:
             </div>
             """, unsafe_allow_html=True)
 
-        # Side by side
         col1, col2 = st.columns(2)
-
         for col, name in [(col1, n1), (col2, n2)]:
             data      = r[name]
             is_winner = winner["college"] == name
@@ -916,7 +978,6 @@ else:
 
         st.markdown('<hr style="margin:2rem 0">', unsafe_allow_html=True)
 
-        # Common gaps
         if comp["common_gaps"]:
             st.markdown(
                 '<div class="section-header">⚠️ Common Gaps</div>'
@@ -937,7 +998,6 @@ else:
                 '<hr style="margin:2rem 0">', unsafe_allow_html=True
             )
 
-        # Unique gaps
         unique = comp["unique_gaps"]
         if unique.get(n1) or unique.get(n2):
             st.markdown(
@@ -992,7 +1052,6 @@ else:
                         unsafe_allow_html=True
                     )
 
-        # Score bar chart
         st.markdown('<hr style="margin:2rem 0">', unsafe_allow_html=True)
         st.markdown(
             '<div class="section-header">Score Comparison</div>'
@@ -1044,5 +1103,367 @@ else:
             <div style="font-size:12px;color:#484f58">
             Upload two syllabus PDFs, pick a target role,<br>
             and see how they compare side by side.</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+# ── RESUME MODE ───────────────────────────────────────────────────────────────
+
+else:
+    st.markdown("""
+    <div class="hero-title">📄 Resume Analyser</div>
+    <div class="hero-sub">See how your resume stacks up against
+    real job descriptions — and what to add to stand out.</div>
+    """, unsafe_allow_html=True)
+    st.markdown('<hr style="margin:1.2rem 0">', unsafe_allow_html=True)
+
+    if resume_btn:
+        if not resume_pdf:
+            st.warning("Please upload your resume PDF first!")
+        else:
+            resume_path = f"data/{resume_pdf.name}"
+            with open(resume_path, "wb") as f:
+                f.write(resume_pdf.getbuffer())
+
+            with st.spinner(f"Loading JD data for {resume_role}..."):
+                scrape_jobs(role_group=resume_role, use_fallback=True)
+
+            syllabus_data = None
+            if also_compare_syllabus and syllabus_pdf:
+                syllabus_path = f"data/{syllabus_pdf.name}"
+                with open(syllabus_path, "wb") as f:
+                    f.write(syllabus_pdf.getbuffer())
+                with st.spinner("Parsing syllabus..."):
+                    syllabus_data = parse_syllabus(
+                        syllabus_path, syllabus_course
+                    )
+
+            with st.spinner("Analysing your resume..."):
+                analyse_resume(
+                    resume_path,
+                    resume_role,
+                    syllabus_data
+                )
+            st.success("Resume analysis complete!")
+
+    try:
+        ra = load_resume_analysis()
+        vs_jd      = ra["vs_jd"]
+        score_data = ra["score"]
+        vs_syl     = ra.get("vs_syllabus")
+        role       = ra["role_group"]
+
+        # ── Score card ────────────────────────────────────────────────────────
+
+        grade       = score_data["grade"]
+        score       = score_data["score"]
+        grade_color = (
+            "#3fb950" if grade in ["A"]
+            else "#58a6ff" if grade in ["B"]
+            else "#e3b341" if grade in ["C"]
+            else "#f85149"
+        )
+
+        c1, c2, c3, c4 = st.columns(4)
+        with c1:
+            st.markdown(f"""
+            <div class="metric-card">
+                <div class="metric-value"
+                style="color:{grade_color};font-size:3rem">{grade}</div>
+                <div class="metric-label">Resume Grade</div>
+            </div>""", unsafe_allow_html=True)
+        with c2:
+            st.markdown(f"""
+            <div class="metric-card">
+                <div class="metric-value"
+                style="color:{grade_color}">{score}%</div>
+                <div class="metric-label">Role Fit Score</div>
+            </div>""", unsafe_allow_html=True)
+        with c3:
+            st.markdown(f"""
+            <div class="metric-card">
+                <div class="metric-value metric-value-green">
+                {vs_jd['covered_count']}</div>
+                <div class="metric-label">Skills Matched</div>
+            </div>""", unsafe_allow_html=True)
+        with c4:
+            st.markdown(f"""
+            <div class="metric-card">
+                <div class="metric-value metric-value-red">
+                {vs_jd['gap_count']}</div>
+                <div class="metric-label">Skills Missing</div>
+            </div>""", unsafe_allow_html=True)
+
+        # Verdict
+        st.markdown(f"""
+        <div style="background:#161b22;border:1px solid #21262d;
+        border-radius:10px;padding:14px 18px;margin:16px 0;
+        font-size:13px;color:#8b949e">
+            <b style="color:#e6edf3">Verdict:</b>
+            {score_data['verdict']}
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.markdown('<hr style="margin:1.5rem 0">', unsafe_allow_html=True)
+
+        # ── Skills on resume ──────────────────────────────────────────────────
+
+        left, right = st.columns([1, 1])
+
+        with left:
+            st.markdown(
+                '<div class="section-header">✅ Skills on Your Resume</div>'
+                '<div class="section-sub">'
+                'Skills detected from your resume PDF</div>',
+                unsafe_allow_html=True
+            )
+            resume_skills = ra.get("resume_skills", [])
+            if resume_skills:
+                chips = "".join([
+                    f'<span class="skill-chip">{s["skill"]}</span>'
+                    for s in resume_skills
+                ])
+                st.markdown(
+                    f'<div style="margin-top:8px">{chips}</div>',
+                    unsafe_allow_html=True
+                )
+            else:
+                st.markdown(
+                    '<div style="color:#484f58;font-size:13px">'
+                    'No skills detected. Make sure your resume has '
+                    'clear skill keywords.</div>',
+                    unsafe_allow_html=True
+                )
+
+        with right:
+            st.markdown(
+                '<div class="section-header">❌ Missing from Resume</div>'
+                '<div class="section-sub">'
+                f'Skills {role} roles want that aren\'t on your resume'
+                '</div>',
+                unsafe_allow_html=True
+            )
+            for g in vs_jd["gaps"][:10]:
+                st.markdown(f"""
+                <div class="gap-badge">
+                    <span>{g['skill']}</span>
+                    <span class="gap-badge-pct">
+                    {g['demand']}% of JDs</span>
+                </div>
+                """, unsafe_allow_html=True)
+
+        st.markdown('<hr style="margin:2rem 0">', unsafe_allow_html=True)
+
+        # ── What to add ───────────────────────────────────────────────────────
+
+        st.markdown(
+            '<div class="section-header">🚀 What to Add to Your Resume</div>'
+            '<div class="section-sub">'
+            'Prioritised by industry demand — add these to boost your score'
+            '</div>',
+            unsafe_allow_html=True
+        )
+
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.markdown(
+                '<div style="font-size:13px;font-weight:600;'
+                'color:#f85149;margin-bottom:10px">'
+                '🔴 Quick Wins — High Demand</div>',
+                unsafe_allow_html=True
+            )
+            if score_data["quick_wins"]:
+                for qw in score_data["quick_wins"]:
+                    plan = generate_skill_roadmap(
+                        qw["skill"], role, qw["demand"]
+                    )
+                    st.markdown(f"""
+                    <div class="gap-badge" style="margin-bottom:6px">
+                        <div>
+                            <div style="font-weight:600">
+                            {qw['skill']}</div>
+                            <div style="font-size:11px;color:#8b949e;
+                            margin-top:2px">
+                            ⏱ {plan['time_estimate']}
+                            · {plan['difficulty']}</div>
+                        </div>
+                        <span class="gap-badge-pct">
+                        {qw['demand']}%</span>
+                    </div>
+                    """, unsafe_allow_html=True)
+            else:
+                st.markdown(
+                    '<div style="color:#484f58;font-size:13px">'
+                    '🎉 You have all high-demand skills!</div>',
+                    unsafe_allow_html=True
+                )
+
+        with col2:
+            st.markdown(
+                '<div style="font-size:13px;font-weight:600;'
+                'color:#e3b341;margin-bottom:10px">'
+                '🟡 Nice to Have — Lower Demand</div>',
+                unsafe_allow_html=True
+            )
+            if score_data["nice_to_have"]:
+                for nth in score_data["nice_to_have"]:
+                    st.markdown(f"""
+                    <div class="common-gap" style="margin-bottom:6px">
+                        <span>{nth['skill']}</span>
+                        <span>{nth['demand']}% of JDs</span>
+                    </div>
+                    """, unsafe_allow_html=True)
+            else:
+                st.markdown(
+                    '<div style="color:#484f58;font-size:13px">'
+                    'Nothing more to add!</div>',
+                    unsafe_allow_html=True
+                )
+
+        # ── Detailed roadmap for quick wins ───────────────────────────────────
+
+        if score_data["quick_wins"]:
+            st.markdown(
+                '<hr style="margin:2rem 0">', unsafe_allow_html=True
+            )
+            st.markdown(
+                '<div class="section-header">'
+                '📚 How to Learn Your Quick Wins</div>'
+                '<div class="section-sub">'
+                'Week-by-week plans for your highest priority gaps</div>',
+                unsafe_allow_html=True
+            )
+            for qw in score_data["quick_wins"]:
+                plan = generate_skill_roadmap(
+                    qw["skill"], role, qw["demand"]
+                )
+                diff_icon = (
+                    "🟢" if plan['difficulty'] == "Beginner"
+                    else "🟡" if plan['difficulty'] == "Intermediate"
+                    else "🔴"
+                )
+                with st.expander(
+                    f"{qw['skill']}  ·  {qw['demand']}% of JDs  ·  "
+                    f"⏱ {plan['time_estimate']}  ·  "
+                    f"{diff_icon} {plan['difficulty']}"
+                ):
+                    st.markdown(
+                        f'<div style="font-size:13px;color:#8b949e;'
+                        f'margin-bottom:16px;padding:12px;'
+                        f'background:#161b22;border-radius:8px;'
+                        f'border:1px solid #21262d">'
+                        f'<b style="color:#e6edf3">Why this matters</b>'
+                        f'<br>{plan["why_it_matters"]}</div>',
+                        unsafe_allow_html=True
+                    )
+                    col1, col2 = st.columns(2)
+                    with col1:
+                        st.markdown(
+                            '<div style="font-size:12px;font-weight:600;'
+                            'color:#e6edf3;margin-bottom:8px">'
+                            '📅 Weekly Plan</div>',
+                            unsafe_allow_html=True
+                        )
+                        for week in plan["weekly_plan"]:
+                            st.markdown(f"""
+                            <div class="roadmap-week">
+                                <div class="roadmap-week-title">
+                                Week {week['week']} — {week['focus']}
+                                </div>
+                                <div class="roadmap-week-goal">
+                                🎯 {week['goal']}</div>
+                            </div>
+                            """, unsafe_allow_html=True)
+                    with col2:
+                        st.markdown(
+                            '<div style="font-size:12px;font-weight:600;'
+                            'color:#e6edf3;margin-bottom:8px">'
+                            '🔗 Free Resources</div>',
+                            unsafe_allow_html=True
+                        )
+                        icons = {
+                            "Video": "📹", "Book": "📖",
+                            "Course": "🎓", "Interactive": "💻",
+                            "Docs": "📄", "Practice": "🏋️",
+                            "Software": "💾", "Article": "📰"
+                        }
+                        for res in plan["free_resources"]:
+                            icon = icons.get(res["type"], "🔗")
+                            st.markdown(
+                                f'<div style="font-size:12px;'
+                                f'color:#8b949e;padding:4px 0">'
+                                f'{icon} <a href="{res["url"]}" '
+                                f'target="_blank" style="color:#58a6ff;'
+                                f'text-decoration:none">{res["name"]}</a>'
+                                f' · <span style="color:#484f58">'
+                                f'{res["type"]}</span></div>',
+                                unsafe_allow_html=True
+                            )
+
+        # ── Resume vs Syllabus ────────────────────────────────────────────────
+
+        if vs_syl:
+            st.markdown(
+                '<hr style="margin:2rem 0">', unsafe_allow_html=True
+            )
+            st.markdown(
+                '<div class="section-header">'
+                '🎓 Resume vs Syllabus</div>'
+                '<div class="section-sub">'
+                'How much of your education are you actually using?'
+                '</div>',
+                unsafe_allow_html=True
+            )
+
+            u1, u2, u3 = st.columns(3)
+            with u1:
+                st.markdown(f"""
+                <div class="metric-card">
+                    <div class="metric-value">
+                    {vs_syl['utilisation_score']}%</div>
+                    <div class="metric-label">Education Utilisation</div>
+                </div>""", unsafe_allow_html=True)
+            with u2:
+                st.markdown(f"""
+                <div class="metric-card">
+                    <div class="metric-value metric-value-green">
+                    {vs_syl['using_count']}</div>
+                    <div class="metric-label">Syllabus Skills Used</div>
+                </div>""", unsafe_allow_html=True)
+            with u3:
+                st.markdown(f"""
+                <div class="metric-card">
+                    <div class="metric-value" style="color:#e3b341">
+                    {vs_syl['self_learned_count']}</div>
+                    <div class="metric-label">Self-Learned Skills</div>
+                </div>""", unsafe_allow_html=True)
+
+            if vs_syl["self_learned"]:
+                st.markdown("<br>", unsafe_allow_html=True)
+                st.markdown(
+                    '<div style="font-size:13px;font-weight:600;'
+                    'color:#e3b341;margin-bottom:8px">'
+                    '⭐ Self-Learned Skills (not in your syllabus)</div>',
+                    unsafe_allow_html=True
+                )
+                chips = "".join([
+                    f'<span class="skill-chip" '
+                    f'style="border-color:#4a4a15;color:#e3b341">'
+                    f'{s}</span>'
+                    for s in vs_syl["self_learned"]
+                ])
+                st.markdown(chips, unsafe_allow_html=True)
+
+    except FileNotFoundError:
+        st.markdown("""
+        <div style="background:#161b22;border:1px solid #21262d;
+        border-radius:12px;padding:2rem;text-align:center">
+            <div style="font-size:32px;margin-bottom:12px">📄</div>
+            <div style="font-size:14px;font-weight:600;color:#e6edf3;
+            margin-bottom:6px">Resume Analyser</div>
+            <div style="font-size:12px;color:#484f58;line-height:1.8">
+            Upload your resume PDF → Pick your target role<br>
+            → Get your role fit score + what to add to get hired.
+            </div>
         </div>
         """, unsafe_allow_html=True)
