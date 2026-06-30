@@ -51,12 +51,6 @@
       "category": "Data"
     },
     {
-      "skill": "Git",
-      "frequency": 3,
-      "percentage": 30.0,
-      "category": "Cloud & DevOps"
-    },
-    {
       "skill": "Cloud Computing",
       "frequency": 3,
       "percentage": 30.0,
@@ -75,10 +69,10 @@
       "category": "Data"
     },
     {
-      "skill": "NLP",
+      "skill": "Git",
       "frequency": 3,
       "percentage": 30.0,
-      "category": "AI / ML"
+      "category": "Cloud & DevOps"
     },
     {
       "skill": "Data Analysis",
@@ -87,13 +81,19 @@
       "category": "Data"
     },
     {
-      "skill": "PyTorch",
+      "skill": "NLP",
+      "frequency": 3,
+      "percentage": 30.0,
+      "category": "AI / ML"
+    },
+    {
+      "skill": "Scikit-learn",
       "frequency": 2,
       "percentage": 20.0,
       "category": "AI / ML"
     },
     {
-      "skill": "Scikit-learn",
+      "skill": "PyTorch",
       "frequency": 2,
       "percentage": 20.0,
       "category": "AI / ML"
@@ -161,63 +161,63 @@
   ],
   "skill_per_role": {
     "data scientist": {
-      "Pandas": 2,
-      "Deep Learning": 2,
-      "Git": 1,
-      "SQL": 2,
-      "Data Visualization": 2,
-      "Statistics": 2,
-      "PyTorch": 1,
-      "Scikit-learn": 2,
       "Cloud Computing": 2,
-      "Python": 3,
+      "SQL": 2,
       "TensorFlow": 1,
-      "NumPy": 2,
       "Machine Learning": 3,
+      "Data Visualization": 2,
+      "Scikit-learn": 2,
+      "PyTorch": 1,
+      "Python": 3,
+      "Pandas": 2,
+      "NumPy": 2,
+      "Deep Learning": 2,
+      "Statistics": 2,
+      "Git": 1,
       "Data Analysis": 1,
       "Generative AI": 1,
       "Docker": 1,
-      "NLP": 1,
-      "Web Development": 1
+      "Web Development": 1,
+      "NLP": 1
     },
     "data analyst": {
       "SQL": 3,
-      "Statistics": 2,
-      "Big Data": 1,
-      "NLP": 2,
-      "Python": 3,
       "Data Analysis": 2,
       "Machine Learning": 2,
-      "Deep Learning": 1,
+      "Big Data": 1,
+      "Python": 3,
+      "NLP": 2,
+      "Statistics": 2,
       "Data Engineering": 1,
-      "Pandas": 1,
+      "Deep Learning": 1,
       "Data Visualization": 1,
-      "NumPy": 1
+      "NumPy": 1,
+      "Pandas": 1
     },
     "machine learning engineer": {
-      "Deep Learning": 1,
+      "Excel": 1,
+      "Machine Learning": 2,
       "Data Visualization": 2,
       "Python": 2,
-      "Machine Learning": 2,
-      "Excel": 1,
-      "Pandas": 1,
-      "Git": 1,
+      "Deep Learning": 1,
       "SQL": 1,
       "Calculus": 1,
+      "Git": 1,
+      "Pandas": 1,
       "XGBoost": 1
     },
     "AI engineer": {
-      "Deep Learning": 2,
-      "Git": 1,
-      "Linux": 1,
       "SQL": 2,
-      "Docker": 1,
-      "Computer Vision": 2,
-      "Python": 2,
       "TensorFlow": 2,
       "Machine Learning": 2,
-      "PyTorch": 1,
-      "Cloud Computing": 1
+      "Docker": 1,
+      "Linux": 1,
+      "Python": 2,
+      "Computer Vision": 2,
+      "Deep Learning": 2,
+      "Git": 1,
+      "Cloud Computing": 1,
+      "PyTorch": 1
     }
   }
 }

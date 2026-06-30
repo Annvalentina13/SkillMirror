@@ -34,13 +34,18 @@
       "status": "covered"
     },
     {
+      "skill": "Pandas",
+      "demand": 40.0,
+      "status": "covered"
+    },
+    {
       "skill": "Statistics",
       "demand": 40.0,
       "status": "covered"
     },
     {
-      "skill": "Pandas",
-      "demand": 40.0,
+      "skill": "Cloud Computing",
+      "demand": 30.0,
       "status": "covered"
     },
     {
@@ -50,11 +55,6 @@
     },
     {
       "skill": "NumPy",
-      "demand": 30.0,
-      "status": "covered"
-    },
-    {
-      "skill": "Cloud Computing",
       "demand": 30.0,
       "status": "covered"
     },
@@ -69,22 +69,22 @@
       "status": "covered"
     },
     {
-      "skill": "PyTorch",
-      "demand": 20.0,
-      "status": "covered"
-    },
-    {
       "skill": "Scikit-learn",
       "demand": 20.0,
       "status": "covered"
     },
     {
-      "skill": "Computer Vision",
+      "skill": "PyTorch",
       "demand": 20.0,
       "status": "covered"
     },
     {
       "skill": "Docker",
+      "demand": 20.0,
+      "status": "covered"
+    },
+    {
+      "skill": "Computer Vision",
       "demand": 20.0,
       "status": "covered"
     },
