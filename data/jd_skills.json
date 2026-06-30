@@ -1,223 +1,154 @@
 {
   "total_jds": 10,
-  "role_group": "Data & AI",
+  "role_group": "Software Engineering",
   "roles_covered": [
-    "data scientist",
-    "data analyst",
-    "machine learning engineer",
-    "AI engineer"
+    "software engineer",
+    "backend developer",
+    "full stack developer",
+    "frontend developer"
   ],
   "skills_ranked": [
     {
-      "skill": "Python",
+      "skill": "Git",
+      "frequency": 10,
+      "percentage": 100.0,
+      "category": "Cloud & DevOps"
+    },
+    {
+      "skill": "SQL",
       "frequency": 10,
       "percentage": 100.0,
       "category": "Programming"
     },
     {
-      "skill": "Machine Learning",
-      "frequency": 9,
-      "percentage": 90.0,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "SQL",
+      "skill": "Web Development",
       "frequency": 8,
       "percentage": 80.0,
-      "category": "Programming"
+      "category": "Software Eng"
     },
     {
-      "skill": "Deep Learning",
+      "skill": "Data Structures",
       "frequency": 6,
       "percentage": 60.0,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Data Visualization",
-      "frequency": 5,
-      "percentage": 50.0,
-      "category": "Data"
-    },
-    {
-      "skill": "Pandas",
-      "frequency": 4,
-      "percentage": 40.0,
-      "category": "Data"
-    },
-    {
-      "skill": "Statistics",
-      "frequency": 4,
-      "percentage": 40.0,
-      "category": "Data"
-    },
-    {
-      "skill": "Cloud Computing",
-      "frequency": 3,
-      "percentage": 30.0,
-      "category": "Cloud & DevOps"
-    },
-    {
-      "skill": "TensorFlow",
-      "frequency": 3,
-      "percentage": 30.0,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "NumPy",
-      "frequency": 3,
-      "percentage": 30.0,
-      "category": "Data"
-    },
-    {
-      "skill": "Git",
-      "frequency": 3,
-      "percentage": 30.0,
-      "category": "Cloud & DevOps"
-    },
-    {
-      "skill": "Data Analysis",
-      "frequency": 3,
-      "percentage": 30.0,
-      "category": "Data"
-    },
-    {
-      "skill": "NLP",
-      "frequency": 3,
-      "percentage": 30.0,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Scikit-learn",
-      "frequency": 2,
-      "percentage": 20.0,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "PyTorch",
-      "frequency": 2,
-      "percentage": 20.0,
-      "category": "AI / ML"
+      "category": "Software Eng"
     },
     {
       "skill": "Docker",
-      "frequency": 2,
-      "percentage": 20.0,
+      "frequency": 6,
+      "percentage": 60.0,
       "category": "Cloud & DevOps"
     },
     {
-      "skill": "Computer Vision",
-      "frequency": 2,
-      "percentage": 20.0,
-      "category": "AI / ML"
+      "skill": "OOP",
+      "frequency": 5,
+      "percentage": 50.0,
+      "category": "Software Eng"
     },
     {
-      "skill": "Big Data",
-      "frequency": 1,
-      "percentage": 10.0,
-      "category": "Data"
+      "skill": "Java",
+      "frequency": 5,
+      "percentage": 50.0,
+      "category": "Programming"
     },
     {
-      "skill": "Excel",
-      "frequency": 1,
-      "percentage": 10.0,
-      "category": "Finance & MBA"
+      "skill": "Python",
+      "frequency": 5,
+      "percentage": 50.0,
+      "category": "Programming"
+    },
+    {
+      "skill": "Algorithms",
+      "frequency": 4,
+      "percentage": 40.0,
+      "category": "Software Eng"
+    },
+    {
+      "skill": "JavaScript",
+      "frequency": 4,
+      "percentage": 40.0,
+      "category": "Programming"
+    },
+    {
+      "skill": "Kubernetes",
+      "frequency": 3,
+      "percentage": 30.0,
+      "category": "Cloud & DevOps"
+    },
+    {
+      "skill": "Databases",
+      "frequency": 3,
+      "percentage": 30.0,
+      "category": "Software Eng"
     },
     {
       "skill": "Linux",
-      "frequency": 1,
-      "percentage": 10.0,
+      "frequency": 3,
+      "percentage": 30.0,
       "category": "Cloud & DevOps"
     },
     {
-      "skill": "Data Engineering",
-      "frequency": 1,
-      "percentage": 10.0,
-      "category": "Data"
-    },
-    {
-      "skill": "Calculus",
-      "frequency": 1,
-      "percentage": 10.0,
-      "category": "Mathematics"
-    },
-    {
-      "skill": "XGBoost",
-      "frequency": 1,
-      "percentage": 10.0,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Generative AI",
-      "frequency": 1,
-      "percentage": 10.0,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Web Development",
-      "frequency": 1,
-      "percentage": 10.0,
-      "category": "Software Eng"
+      "skill": "Cloud Computing",
+      "frequency": 2,
+      "percentage": 20.0,
+      "category": "Cloud & DevOps"
     }
   ],
   "skill_per_role": {
-    "data scientist": {
-      "Cloud Computing": 2,
-      "SQL": 2,
-      "TensorFlow": 1,
-      "Machine Learning": 3,
-      "Data Visualization": 2,
-      "Scikit-learn": 2,
-      "PyTorch": 1,
-      "Python": 3,
-      "Pandas": 2,
-      "NumPy": 2,
-      "Deep Learning": 2,
-      "Statistics": 2,
-      "Git": 1,
-      "Data Analysis": 1,
-      "Generative AI": 1,
-      "Docker": 1,
-      "Web Development": 1,
-      "NLP": 1
-    },
-    "data analyst": {
+    "software engineer": {
+      "Web Development": 2,
+      "OOP": 2,
+      "Algorithms": 2,
+      "Git": 3,
+      "Java": 2,
+      "Data Structures": 2,
+      "JavaScript": 1,
+      "Python": 2,
       "SQL": 3,
-      "Data Analysis": 2,
-      "Machine Learning": 2,
-      "Big Data": 1,
-      "Python": 3,
-      "NLP": 2,
-      "Statistics": 2,
-      "Data Engineering": 1,
-      "Deep Learning": 1,
-      "Data Visualization": 1,
-      "NumPy": 1,
-      "Pandas": 1
+      "Linux": 2,
+      "Kubernetes": 1,
+      "Docker": 1
     },
-    "machine learning engineer": {
-      "Excel": 1,
-      "Machine Learning": 2,
-      "Data Visualization": 2,
-      "Python": 2,
-      "Deep Learning": 1,
-      "SQL": 1,
-      "Calculus": 1,
-      "Git": 1,
-      "Pandas": 1,
-      "XGBoost": 1
-    },
-    "AI engineer": {
-      "SQL": 2,
-      "TensorFlow": 2,
-      "Machine Learning": 2,
-      "Docker": 1,
-      "Linux": 1,
-      "Python": 2,
-      "Computer Vision": 2,
-      "Deep Learning": 2,
-      "Git": 1,
+    "backend developer": {
+      "Web Development": 2,
+      "Kubernetes": 1,
+      "Git": 3,
+      "Java": 2,
+      "Docker": 2,
       "Cloud Computing": 1,
-      "PyTorch": 1
+      "SQL": 3,
+      "Databases": 1,
+      "JavaScript": 1,
+      "OOP": 1,
+      "Algorithms": 1,
+      "Data Structures": 1,
+      "Python": 1
+    },
+    "full stack developer": {
+      "Web Development": 2,
+      "Git": 2,
+      "Data Structures": 1,
+      "Databases": 1,
+      "JavaScript": 1,
+      "SQL": 2,
+      "Kubernetes": 1,
+      "OOP": 1,
+      "Java": 1,
+      "Docker": 1,
+      "Cloud Computing": 1,
+      "Python": 1
+    },
+    "frontend developer": {
+      "Web Development": 2,
+      "OOP": 1,
+      "Algorithms": 1,
+      "Git": 2,
+      "Data Structures": 2,
+      "Docker": 2,
+      "Linux": 1,
+      "Python": 1,
+      "SQL": 2,
+      "Databases": 1,
+      "JavaScript": 1
     }
   }
 }

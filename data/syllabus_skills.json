@@ -1,71 +1,56 @@
 {
-  "course_name": "SRM CI 2024",
-  "total_skills": 60,
+  "course_name": "SRM CSBS 2024",
+  "total_skills": 53,
   "skills_ranked": [
     {
-      "skill": "Machine Learning",
-      "mentions": 166,
-      "category": "AI / ML"
-    },
-    {
       "skill": "Algorithms",
-      "mentions": 162,
+      "mentions": 114,
       "category": "Software Eng"
     },
     {
       "skill": "Deep Learning",
-      "mentions": 129,
+      "mentions": 90,
       "category": "AI / ML"
     },
     {
-      "skill": "IoT",
-      "mentions": 87,
-      "category": "ECE & Embedded"
-    },
-    {
-      "skill": "Statistics",
-      "mentions": 74,
-      "category": "Data"
+      "skill": "Machine Learning",
+      "mentions": 77,
+      "category": "AI / ML"
     },
     {
       "skill": "Data Structures",
-      "mentions": 60,
+      "mentions": 67,
       "category": "Software Eng"
-    },
-    {
-      "skill": "Big Data",
-      "mentions": 50,
-      "category": "Data"
     },
     {
       "skill": "Computer Networks",
-      "mentions": 48,
+      "mentions": 67,
       "category": "Core CS"
-    },
-    {
-      "skill": "Databases",
-      "mentions": 43,
-      "category": "Software Eng"
     },
     {
       "skill": "Operating Systems",
-      "mentions": 42,
+      "mentions": 46,
       "category": "Core CS"
     },
     {
-      "skill": "Calculus",
-      "mentions": 42,
-      "category": "Mathematics"
+      "skill": "Signal Processing",
+      "mentions": 41,
+      "category": "ECE & Embedded"
     },
     {
-      "skill": "SQL",
-      "mentions": 36,
-      "category": "Programming"
+      "skill": "IoT",
+      "mentions": 39,
+      "category": "ECE & Embedded"
     },
     {
-      "skill": "Linear Algebra",
-      "mentions": 36,
-      "category": "Mathematics"
+      "skill": "Databases",
+      "mentions": 37,
+      "category": "Software Eng"
+    },
+    {
+      "skill": "NLP",
+      "mentions": 34,
+      "category": "AI / ML"
     },
     {
       "skill": "Computer Vision",
@@ -73,179 +58,164 @@
       "category": "AI / ML"
     },
     {
-      "skill": "NLP",
-      "mentions": 31,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Signal Processing",
-      "mentions": 30,
-      "category": "ECE & Embedded"
-    },
-    {
-      "skill": "Data Analysis",
-      "mentions": 26,
-      "category": "Data"
-    },
-    {
       "skill": "Python",
-      "mentions": 25,
+      "mentions": 32,
       "category": "Programming"
-    },
-    {
-      "skill": "Cloud Computing",
-      "mentions": 23,
-      "category": "Cloud & DevOps"
-    },
-    {
-      "skill": "Excel",
-      "mentions": 19,
-      "category": "Finance & MBA"
-    },
-    {
-      "skill": "Java",
-      "mentions": 13,
-      "category": "Programming"
-    },
-    {
-      "skill": "Social Media",
-      "mentions": 12,
-      "category": "Marketing"
-    },
-    {
-      "skill": "Financial Modeling",
-      "mentions": 11,
-      "category": "Finance & MBA"
-    },
-    {
-      "skill": "UI Design",
-      "mentions": 9,
-      "category": "Design & UX"
-    },
-    {
-      "skill": "Embedded Systems",
-      "mentions": 8,
-      "category": "ECE & Embedded"
-    },
-    {
-      "skill": "FEA",
-      "mentions": 8,
-      "category": "Mechanical"
-    },
-    {
-      "skill": "Digital Marketing",
-      "mentions": 8,
-      "category": "Marketing"
-    },
-    {
-      "skill": "TensorFlow",
-      "mentions": 7,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Construction Mgmt",
-      "mentions": 7,
-      "category": "Civil"
-    },
-    {
-      "skill": "Surveying",
-      "mentions": 6,
-      "category": "Civil"
     },
     {
       "skill": "Business Analysis",
-      "mentions": 6,
+      "mentions": 32,
       "category": "Finance & MBA"
     },
     {
-      "skill": "Figma",
-      "mentions": 6,
-      "category": "Design & UX"
-    },
-    {
-      "skill": "PyTorch",
-      "mentions": 5,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "OOP",
-      "mentions": 5,
+      "skill": "Web Development",
+      "mentions": 29,
       "category": "Software Eng"
     },
     {
-      "skill": "XGBoost",
-      "mentions": 4,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Docker",
-      "mentions": 4,
+      "skill": "Cloud Computing",
+      "mentions": 28,
       "category": "Cloud & DevOps"
     },
     {
-      "skill": "Kubernetes",
-      "mentions": 4,
-      "category": "Cloud & DevOps"
-    },
-    {
-      "skill": "Manufacturing",
-      "mentions": 4,
-      "category": "Mechanical"
-    },
-    {
-      "skill": "Data Visualization",
-      "mentions": 3,
+      "skill": "Statistics",
+      "mentions": 25,
       "category": "Data"
     },
     {
-      "skill": "Data Engineering",
-      "mentions": 3,
-      "category": "Data"
-    },
-    {
-      "skill": "Scikit-learn",
-      "mentions": 3,
-      "category": "AI / ML"
-    },
-    {
-      "skill": "Pandas",
-      "mentions": 3,
-      "category": "Data"
-    },
-    {
-      "skill": "NumPy",
-      "mentions": 3,
-      "category": "Data"
-    },
-    {
-      "skill": "SEO",
-      "mentions": 3,
-      "category": "Marketing"
-    },
-    {
-      "skill": "Google Analytics",
-      "mentions": 3,
-      "category": "Marketing"
-    },
-    {
-      "skill": "MATLAB",
-      "mentions": 2,
+      "skill": "SQL",
+      "mentions": 20,
       "category": "Programming"
     },
     {
-      "skill": "Linux",
-      "mentions": 2,
-      "category": "Cloud & DevOps"
+      "skill": "Linear Algebra",
+      "mentions": 20,
+      "category": "Mathematics"
     },
     {
-      "skill": "Network Security",
-      "mentions": 2,
-      "category": "Cybersecurity"
+      "skill": "Construction Mgmt",
+      "mentions": 20,
+      "category": "Civil"
     },
     {
       "skill": "Cryptography",
-      "mentions": 2,
+      "mentions": 19,
       "category": "Core CS"
+    },
+    {
+      "skill": "Data Analysis",
+      "mentions": 17,
+      "category": "Data"
+    },
+    {
+      "skill": "Excel",
+      "mentions": 17,
+      "category": "Finance & MBA"
+    },
+    {
+      "skill": "Compliance",
+      "mentions": 17,
+      "category": "Law"
+    },
+    {
+      "skill": "Java",
+      "mentions": 16,
+      "category": "Programming"
+    },
+    {
+      "skill": "Pandas",
+      "mentions": 15,
+      "category": "Data"
+    },
+    {
+      "skill": "Financial Modeling",
+      "mentions": 14,
+      "category": "Finance & MBA"
+    },
+    {
+      "skill": "Network Security",
+      "mentions": 13,
+      "category": "Cybersecurity"
+    },
+    {
+      "skill": "JavaScript",
+      "mentions": 12,
+      "category": "Programming"
+    },
+    {
+      "skill": "NumPy",
+      "mentions": 11,
+      "category": "Data"
+    },
+    {
+      "skill": "Calculus",
+      "mentions": 11,
+      "category": "Mathematics"
+    },
+    {
+      "skill": "Embedded Systems",
+      "mentions": 11,
+      "category": "ECE & Embedded"
+    },
+    {
+      "skill": "Data Visualization",
+      "mentions": 10,
+      "category": "Data"
+    },
+    {
+      "skill": "OOP",
+      "mentions": 10,
+      "category": "Software Eng"
+    },
+    {
+      "skill": "Big Data",
+      "mentions": 7,
+      "category": "Data"
+    },
+    {
+      "skill": "Medical Statistics",
+      "mentions": 7,
+      "category": "Medical"
+    },
+    {
+      "skill": "Generative AI",
+      "mentions": 5,
+      "category": "AI / ML"
+    },
+    {
+      "skill": "UI Design",
+      "mentions": 5,
+      "category": "Design & UX"
+    },
+    {
+      "skill": "UX Research",
+      "mentions": 5,
+      "category": "Design & UX"
+    },
+    {
+      "skill": "TensorFlow",
+      "mentions": 3,
+      "category": "AI / ML"
+    },
+    {
+      "skill": "DevOps",
+      "mentions": 3,
+      "category": "Cloud & DevOps"
+    },
+    {
+      "skill": "Linux",
+      "mentions": 3,
+      "category": "Cloud & DevOps"
+    },
+    {
+      "skill": "FEA",
+      "mentions": 3,
+      "category": "Mechanical"
+    },
+    {
+      "skill": "Docker",
+      "mentions": 2,
+      "category": "Cloud & DevOps"
     },
     {
       "skill": "Discrete Maths",
@@ -253,66 +223,93 @@
       "category": "Mathematics"
     },
     {
-      "skill": "VLSI",
-      "mentions": 2,
-      "category": "ECE & Embedded"
-    },
-    {
-      "skill": "CAD",
+      "skill": "Manufacturing",
       "mentions": 2,
       "category": "Mechanical"
     },
     {
-      "skill": "C",
+      "skill": "Social Media",
+      "mentions": 2,
+      "category": "Marketing"
+    },
+    {
+      "skill": "R",
       "mentions": 1,
       "category": "Programming"
     },
     {
-      "skill": "JavaScript",
-      "mentions": 1,
-      "category": "Programming"
-    },
-    {
-      "skill": "Generative AI",
+      "skill": "PyTorch",
       "mentions": 1,
       "category": "AI / ML"
     },
     {
-      "skill": "DevOps",
+      "skill": "Scikit-learn",
+      "mentions": 1,
+      "category": "AI / ML"
+    },
+    {
+      "skill": "Git",
       "mentions": 1,
       "category": "Cloud & DevOps"
     },
     {
-      "skill": "Web Development",
+      "skill": "VLSI",
       "mentions": 1,
-      "category": "Software Eng"
+      "category": "ECE & Embedded"
     },
     {
-      "skill": "SIEM",
+      "skill": "Penetration Testing",
       "mentions": 1,
       "category": "Cybersecurity"
     },
     {
-      "skill": "Medical Statistics",
+      "skill": "Accounting",
       "mentions": 1,
-      "category": "Medical"
-    },
-    {
-      "skill": "UX Research",
-      "mentions": 1,
-      "category": "Design & UX"
+      "category": "Finance & MBA"
     }
   ],
   "skills_by_category": {
+    "Software Eng": [
+      {
+        "skill": "Algorithms",
+        "mentions": 114,
+        "category": "Software Eng"
+      },
+      {
+        "skill": "Data Structures",
+        "mentions": 67,
+        "category": "Software Eng"
+      },
+      {
+        "skill": "Databases",
+        "mentions": 37,
+        "category": "Software Eng"
+      },
+      {
+        "skill": "Web Development",
+        "mentions": 29,
+        "category": "Software Eng"
+      },
+      {
+        "skill": "OOP",
+        "mentions": 10,
+        "category": "Software Eng"
+      }
+    ],
     "AI / ML": [
       {
-        "skill": "Machine Learning",
-        "mentions": 166,
+        "skill": "Deep Learning",
+        "mentions": 90,
         "category": "AI / ML"
       },
       {
-        "skill": "Deep Learning",
-        "mentions": 129,
+        "skill": "Machine Learning",
+        "mentions": 77,
+        "category": "AI / ML"
+      },
+      {
+        "skill": "NLP",
+        "mentions": 34,
         "category": "AI / ML"
       },
       {
@@ -321,148 +318,182 @@
         "category": "AI / ML"
       },
       {
-        "skill": "NLP",
-        "mentions": 31,
+        "skill": "Generative AI",
+        "mentions": 5,
         "category": "AI / ML"
       },
       {
         "skill": "TensorFlow",
-        "mentions": 7,
+        "mentions": 3,
         "category": "AI / ML"
       },
       {
         "skill": "PyTorch",
-        "mentions": 5,
-        "category": "AI / ML"
-      },
-      {
-        "skill": "XGBoost",
-        "mentions": 4,
+        "mentions": 1,
         "category": "AI / ML"
       },
       {
         "skill": "Scikit-learn",
-        "mentions": 3,
-        "category": "AI / ML"
-      },
-      {
-        "skill": "Generative AI",
         "mentions": 1,
         "category": "AI / ML"
-      }
-    ],
-    "Software Eng": [
-      {
-        "skill": "Algorithms",
-        "mentions": 162,
-        "category": "Software Eng"
-      },
-      {
-        "skill": "Data Structures",
-        "mentions": 60,
-        "category": "Software Eng"
-      },
-      {
-        "skill": "Databases",
-        "mentions": 43,
-        "category": "Software Eng"
-      },
-      {
-        "skill": "OOP",
-        "mentions": 5,
-        "category": "Software Eng"
-      },
-      {
-        "skill": "Web Development",
-        "mentions": 1,
-        "category": "Software Eng"
-      }
-    ],
-    "ECE & Embedded": [
-      {
-        "skill": "IoT",
-        "mentions": 87,
-        "category": "ECE & Embedded"
-      },
-      {
-        "skill": "Signal Processing",
-        "mentions": 30,
-        "category": "ECE & Embedded"
-      },
-      {
-        "skill": "Embedded Systems",
-        "mentions": 8,
-        "category": "ECE & Embedded"
-      },
-      {
-        "skill": "VLSI",
-        "mentions": 2,
-        "category": "ECE & Embedded"
-      }
-    ],
-    "Data": [
-      {
-        "skill": "Statistics",
-        "mentions": 74,
-        "category": "Data"
-      },
-      {
-        "skill": "Big Data",
-        "mentions": 50,
-        "category": "Data"
-      },
-      {
-        "skill": "Data Analysis",
-        "mentions": 26,
-        "category": "Data"
-      },
-      {
-        "skill": "Data Visualization",
-        "mentions": 3,
-        "category": "Data"
-      },
-      {
-        "skill": "Data Engineering",
-        "mentions": 3,
-        "category": "Data"
-      },
-      {
-        "skill": "Pandas",
-        "mentions": 3,
-        "category": "Data"
-      },
-      {
-        "skill": "NumPy",
-        "mentions": 3,
-        "category": "Data"
       }
     ],
     "Core CS": [
       {
         "skill": "Computer Networks",
-        "mentions": 48,
+        "mentions": 67,
         "category": "Core CS"
       },
       {
         "skill": "Operating Systems",
-        "mentions": 42,
+        "mentions": 46,
         "category": "Core CS"
       },
       {
         "skill": "Cryptography",
-        "mentions": 2,
+        "mentions": 19,
         "category": "Core CS"
+      }
+    ],
+    "ECE & Embedded": [
+      {
+        "skill": "Signal Processing",
+        "mentions": 41,
+        "category": "ECE & Embedded"
+      },
+      {
+        "skill": "IoT",
+        "mentions": 39,
+        "category": "ECE & Embedded"
+      },
+      {
+        "skill": "Embedded Systems",
+        "mentions": 11,
+        "category": "ECE & Embedded"
+      },
+      {
+        "skill": "VLSI",
+        "mentions": 1,
+        "category": "ECE & Embedded"
+      }
+    ],
+    "Programming": [
+      {
+        "skill": "Python",
+        "mentions": 32,
+        "category": "Programming"
+      },
+      {
+        "skill": "SQL",
+        "mentions": 20,
+        "category": "Programming"
+      },
+      {
+        "skill": "Java",
+        "mentions": 16,
+        "category": "Programming"
+      },
+      {
+        "skill": "JavaScript",
+        "mentions": 12,
+        "category": "Programming"
+      },
+      {
+        "skill": "R",
+        "mentions": 1,
+        "category": "Programming"
+      }
+    ],
+    "Finance & MBA": [
+      {
+        "skill": "Business Analysis",
+        "mentions": 32,
+        "category": "Finance & MBA"
+      },
+      {
+        "skill": "Excel",
+        "mentions": 17,
+        "category": "Finance & MBA"
+      },
+      {
+        "skill": "Financial Modeling",
+        "mentions": 14,
+        "category": "Finance & MBA"
+      },
+      {
+        "skill": "Accounting",
+        "mentions": 1,
+        "category": "Finance & MBA"
+      }
+    ],
+    "Cloud & DevOps": [
+      {
+        "skill": "Cloud Computing",
+        "mentions": 28,
+        "category": "Cloud & DevOps"
+      },
+      {
+        "skill": "DevOps",
+        "mentions": 3,
+        "category": "Cloud & DevOps"
+      },
+      {
+        "skill": "Linux",
+        "mentions": 3,
+        "category": "Cloud & DevOps"
+      },
+      {
+        "skill": "Docker",
+        "mentions": 2,
+        "category": "Cloud & DevOps"
+      },
+      {
+        "skill": "Git",
+        "mentions": 1,
+        "category": "Cloud & DevOps"
+      }
+    ],
+    "Data": [
+      {
+        "skill": "Statistics",
+        "mentions": 25,
+        "category": "Data"
+      },
+      {
+        "skill": "Data Analysis",
+        "mentions": 17,
+        "category": "Data"
+      },
+      {
+        "skill": "Pandas",
+        "mentions": 15,
+        "category": "Data"
+      },
+      {
+        "skill": "NumPy",
+        "mentions": 11,
+        "category": "Data"
+      },
+      {
+        "skill": "Data Visualization",
+        "mentions": 10,
+        "category": "Data"
+      },
+      {
+        "skill": "Big Data",
+        "mentions": 7,
+        "category": "Data"
       }
     ],
     "Mathematics": [
       {
-        "skill": "Calculus",
-        "mentions": 42,
+        "skill": "Linear Algebra",
+        "mentions": 20,
         "category": "Mathematics"
       },
       {
-        "skill": "Linear Algebra",
-        "mentions": 36,
+        "skill": "Calculus",
+        "mentions": 11,
         "category": "Mathematics"
       },
       {
@@ -471,158 +502,28 @@
         "category": "Mathematics"
       }
     ],
-    "Programming": [
-      {
-        "skill": "SQL",
-        "mentions": 36,
-        "category": "Programming"
-      },
-      {
-        "skill": "Python",
-        "mentions": 25,
-        "category": "Programming"
-      },
-      {
-        "skill": "Java",
-        "mentions": 13,
-        "category": "Programming"
-      },
-      {
-        "skill": "MATLAB",
-        "mentions": 2,
-        "category": "Programming"
-      },
-      {
-        "skill": "C",
-        "mentions": 1,
-        "category": "Programming"
-      },
-      {
-        "skill": "JavaScript",
-        "mentions": 1,
-        "category": "Programming"
-      }
-    ],
-    "Cloud & DevOps": [
-      {
-        "skill": "Cloud Computing",
-        "mentions": 23,
-        "category": "Cloud & DevOps"
-      },
-      {
-        "skill": "Docker",
-        "mentions": 4,
-        "category": "Cloud & DevOps"
-      },
-      {
-        "skill": "Kubernetes",
-        "mentions": 4,
-        "category": "Cloud & DevOps"
-      },
-      {
-        "skill": "Linux",
-        "mentions": 2,
-        "category": "Cloud & DevOps"
-      },
-      {
-        "skill": "DevOps",
-        "mentions": 1,
-        "category": "Cloud & DevOps"
-      }
-    ],
-    "Finance & MBA": [
-      {
-        "skill": "Excel",
-        "mentions": 19,
-        "category": "Finance & MBA"
-      },
-      {
-        "skill": "Financial Modeling",
-        "mentions": 11,
-        "category": "Finance & MBA"
-      },
-      {
-        "skill": "Business Analysis",
-        "mentions": 6,
-        "category": "Finance & MBA"
-      }
-    ],
-    "Marketing": [
-      {
-        "skill": "Social Media",
-        "mentions": 12,
-        "category": "Marketing"
-      },
-      {
-        "skill": "Digital Marketing",
-        "mentions": 8,
-        "category": "Marketing"
-      },
-      {
-        "skill": "SEO",
-        "mentions": 3,
-        "category": "Marketing"
-      },
-      {
-        "skill": "Google Analytics",
-        "mentions": 3,
-        "category": "Marketing"
-      }
-    ],
-    "Design & UX": [
-      {
-        "skill": "UI Design",
-        "mentions": 9,
-        "category": "Design & UX"
-      },
-      {
-        "skill": "Figma",
-        "mentions": 6,
-        "category": "Design & UX"
-      },
-      {
-        "skill": "UX Research",
-        "mentions": 1,
-        "category": "Design & UX"
-      }
-    ],
-    "Mechanical": [
-      {
-        "skill": "FEA",
-        "mentions": 8,
-        "category": "Mechanical"
-      },
-      {
-        "skill": "Manufacturing",
-        "mentions": 4,
-        "category": "Mechanical"
-      },
-      {
-        "skill": "CAD",
-        "mentions": 2,
-        "category": "Mechanical"
-      }
-    ],
     "Civil": [
       {
         "skill": "Construction Mgmt",
-        "mentions": 7,
+        "mentions": 20,
         "category": "Civil"
-      },
+      }
+    ],
+    "Law": [
       {
-        "skill": "Surveying",
-        "mentions": 6,
-        "category": "Civil"
+        "skill": "Compliance",
+        "mentions": 17,
+        "category": "Law"
       }
     ],
     "Cybersecurity": [
       {
         "skill": "Network Security",
-        "mentions": 2,
+        "mentions": 13,
         "category": "Cybersecurity"
       },
       {
-        "skill": "SIEM",
+        "skill": "Penetration Testing",
         "mentions": 1,
         "category": "Cybersecurity"
       }
@@ -630,21 +531,52 @@
     "Medical": [
       {
         "skill": "Medical Statistics",
-        "mentions": 1,
+        "mentions": 7,
         "category": "Medical"
+      }
+    ],
+    "Design & UX": [
+      {
+        "skill": "UI Design",
+        "mentions": 5,
+        "category": "Design & UX"
+      },
+      {
+        "skill": "UX Research",
+        "mentions": 5,
+        "category": "Design & UX"
+      }
+    ],
+    "Mechanical": [
+      {
+        "skill": "FEA",
+        "mentions": 3,
+        "category": "Mechanical"
+      },
+      {
+        "skill": "Manufacturing",
+        "mentions": 2,
+        "category": "Mechanical"
+      }
+    ],
+    "Marketing": [
+      {
+        "skill": "Social Media",
+        "mentions": 2,
+        "category": "Marketing"
       }
     ]
   },
   "novel_keywords": [
-    "chennai engineering",
-    "india engineering",
-    "engineering chennai",
-    "engineering indian",
-    "institute india",
-    "university pune",
+    "csbs courses",
+    "semester csbs",
+    "iisc bangalore",
     "university chennai",
-    "intelligence courses",
-    "technology course",
-    "chennai institute"
+    "campus chennai",
+    "iim bangalore",
+    "krishna college",
+    "college bangalore",
+    "chennai tech",
+    "university india"
   ]
 }
