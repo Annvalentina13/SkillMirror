@@ -203,7 +203,7 @@ Resume PDF → Same taxonomy extracts skills from resume text
 - [x] Phase 5 — College comparison (head-to-head, common/unique gaps)
 - [x] Phase 6 — Resume upload mode (role-fit score + resume-vs-syllabus)
 - [x] Phase 7 — Premium UI redesign (dark/light theme, tab navigation)
-- [ ] Phase 8 — Deploy on Streamlit Cloud
+- [x] Phase 8 — Deploy on Streamlit Cloud
 
 ---
 
